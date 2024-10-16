@@ -9,7 +9,10 @@ class CarCraft extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: ThemeData(
+        fontFamily: 'SF-Pro-Display',
+      ),
       debugShowCheckedModeBanner: false,
       home: HomeScreen(),
     );
@@ -60,6 +63,12 @@ class TopSection extends StatelessWidget {
               color: Colors.white,
               margin: const EdgeInsets.only(left: 30),
               height: 50,
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text('+ 7 (495) 922-20-20'),
+                ],
+              ),
             ),
           ),
         ],
