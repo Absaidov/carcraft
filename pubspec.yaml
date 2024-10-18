@@ -35,6 +35,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  flutter_svg: ^2.0.10+1
 
 dev_dependencies:
   flutter_test:
@@ -59,8 +60,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/icons/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -77,15 +78,17 @@ flutter:
   fonts:
     - family: Microsoft
       fonts:
-        - asset: assets/fonts/Microsoft-Sansserif/microsoftsansserif.ttf
+        # - asset: assets/fonts/Microsoft-Sansserif/microsoftsansserif.ttf
+        - asset: assets/fonts/microsoftsansserif.ttf
           weight: 700
 
   #     - asset: fonts/Schyler-Italic.ttf
   #         style: italic
     - family: SF-Pro-Display
       fonts:
-         - asset: assets/fonts/SF-Pro-Display-Bold.otf
-  #       - asset: fonts/TrajanPro_Bold.ttf
+        #  - asset: assets/fonts/SF-Pro-Display-Bold.otf
+        #  - asset: assets/fonts/SF-Pro-Display/SF-Pro-Display-HeavyItalic.otf
+         - asset: assets/fonts/SF-Pro-Display/SF-Pro-Display-Heavy.otf
            weight: 700
   #
   # For details regarding fonts from package dependencies,
