@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
-Color blue = const Color(0Xff19254b);
-Color greenPhone = const Color.fromARGB(2, 0, 160, 160);
+Color blue = const Color(0Xff19254B);
+// Color greenPhone = const Color.fromARGB(2, 0, 160, 160);
+Color greenPhone = const Color(0Xff02a0a0);
 Color red = Colors.red;
 Color black = Colors.black;
 
 Color gray = Color.fromARGB(255, 111, 111, 111);
 
-Color white = Color.fromARGB(255, 255, 255, 255);
+// Color white = Color.fromARGB(255, 255, 255, 255);
+Color white = Color(0XffFFFFFFF);
