@@ -18,7 +18,7 @@ class CarCraft extends StatelessWidget {
           scaffoldBackgroundColor: blue,
           colorScheme: ColorScheme(
             brightness: Brightness.light,
-            primary: gray,
+            primary: black,
             onPrimary: gray,
             secondary: gray,
             onSecondary: gray,
