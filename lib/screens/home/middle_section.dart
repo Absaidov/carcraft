@@ -14,11 +14,12 @@ class MiddleSection extends StatelessWidget {
           Container(
             height: 105,
             // color: Colors.white,
-            margin: const EdgeInsets.only(bottom: 10),
+            // margin: const EdgeInsets.only(bottom: 10),
             child: SvgPicture.asset('assets/icons/logo.svg'),
           ),
           Container(
-            height: 150,
+            // color: greenPhone,
+            height: 110,
             // color: Colors.white,
             child: const Text(
               'Единственная в России онлайн-технология финансирования автомобильного бизнеса',
@@ -29,39 +30,88 @@ class MiddleSection extends StatelessWidget {
             ),
           ),
           Container(
-            height: 165,
-            width: 545,
-            color: Colors.green,
+            // color: red,
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: grayBTN,
+                      ),
+                      width: 170,
+                      height: 55,
+                      child: Center(
+                        child: Text(
+                          'Банкам',
+                          style: TextStyle(color: grayBTNFont),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: grayBTN,
+                      ),
+                      width: 170,
+                      height: 55,
+                      child: Center(
+                        child: Text(
+                          'Автосалонам',
+                          style: TextStyle(color: grayBTNFont),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 13),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: grayBTN,
+                        ),
+                        width: 170,
+                        height: 55,
+                        child: Center(
+                          child: Text(
+                            'Инвесторам',
+                            style: TextStyle(color: grayBTNFont),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: grayBTN,
+                        ),
+                        width: 170,
+                        height: 55,
+                        child: Center(
+                          child: Text(
+                            'Проверить VIN',
+                            style: TextStyle(color: grayBTNFont),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  print('Кнопка 1 нажата!');
-                },
-                child: Text('Кнопка 1'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  print('Кнопка 2 нажата!');
-                },
-                child: Text('Кнопка 2'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  print('Кнопка 3 нажата!');
-                },
-                child: Text('Кнопка 3'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  print('Кнопка 4 нажата!');
-                },
-                child: Text('Кнопка 4'),
-              ),
-            ],
-          )
+          Container(
+            child: Image.asset(
+              'assets/images/speedometer.gif',
+              width: 100,
+              height: 100,
+            ),
+          ),
         ],
       ),
     );
