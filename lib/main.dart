@@ -3,8 +3,20 @@ import 'package:flutter/material.dart';
 
 import 'screens/home/home_screen.dart';
 
+import 'package:flutter/services.dart';
+
+// void main() {
+//   runApp(const CarCraft());
+// }
+
 void main() {
-  runApp(const CarCraft());
+  // Блокируем ориентацию экрана на портретную
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]).then((_) {
+    runApp(const CarCraft());
+  });
 }
 
 class CarCraft extends StatelessWidget {

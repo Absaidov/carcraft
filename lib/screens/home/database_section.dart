@@ -5,10 +5,18 @@ class DataBaseSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        width: double.infinity,
-        color: Colors.white,
+    return const Scaffold(
+      // backgroundColor: Color(0Xff19254b),
+      body: SafeArea(
+        bottom: false,
+        child: Padding(
+          padding: EdgeInsets.only(left: 15, right: 15, top: 8),
+          child: Column(
+            children: [
+              // DataBaseSection(),
+            ],
+          ),
+        ),
       ),
     );
   }

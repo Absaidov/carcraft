@@ -1,116 +1,137 @@
+import 'package:carcraft/animated_box/animated_box.dart';
 import 'package:carcraft/constants/constants.dart';
+import 'package:carcraft/screens/home/database_section.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class MiddleSection extends StatelessWidget {
   const MiddleSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
+      width: double.infinity,
+      height: 710,
       padding: const EdgeInsets.only(bottom: 10),
-      child: Column(
+      child: Stack(
         children: [
-          Container(
-            height: 105,
-            // color: Colors.white,
-            // margin: const EdgeInsets.only(bottom: 10),
-            child: SvgPicture.asset('assets/icons/logo.svg'),
-          ),
-          Container(
-            // color: greenPhone,
-            height: 110,
-            // color: Colors.white,
-            child: const Text(
-              'Единственная в России онлайн-технология финансирования автомобильного бизнеса',
-              style: TextStyle(
-                fontSize: 20,
-                fontFamily: 'SF-Pro-Display',
-              ),
+          Positioned(
+            left: -150,
+            top: 290,
+            child: SvgPicture.asset(
+              'assets/apped_new2.svg',
+              fit: BoxFit.cover,
+              semanticsLabel: 'Background SVG',
             ),
           ),
-          Container(
-            // color: red,
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: grayBTN,
-                      ),
-                      width: 170,
-                      height: 55,
-                      child: Center(
+          Column(
+            children: [
+              SizedBox(
+                height: 105,
+                child: SvgPicture.asset('assets/icons/logo.svg'),
+              ),
+              const SizedBox(
+                height: 110,
+                child: Text(
+                  'Единственная в России онлайн-технология финансирования автомобильного бизнеса',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'SF-Pro-Display',
+                  ),
+                ),
+              ),
+              Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          // Обработчик нажатия
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: grayBTN,
+                          minimumSize: const Size(170, 55), // Размер кнопки
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          elevation: 0, // Без тени, как в обычном контейнере
+                        ),
                         child: Text(
                           'Банкам',
                           style: TextStyle(color: grayBTNFont),
                         ),
                       ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: grayBTN,
-                      ),
-                      width: 170,
-                      height: 55,
-                      child: Center(
+                      ElevatedButton(
+                        onPressed: () {
+                          // Обработчик нажатия
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const DataBaseSection()),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: grayBTN,
+                          minimumSize: const Size(170, 55),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          elevation: 0,
+                        ),
                         child: Text(
                           'Автосалонам',
                           style: TextStyle(color: grayBTNFont),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 13),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: grayBTN,
-                        ),
-                        width: 170,
-                        height: 55,
-                        child: Center(
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 13),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            // Обработчик нажатия
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: grayBTN,
+                            minimumSize: const Size(170, 55),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            elevation: 0,
+                          ),
                           child: Text(
                             'Инвесторам',
                             style: TextStyle(color: grayBTNFont),
                           ),
                         ),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: grayBTN,
-                        ),
-                        width: 170,
-                        height: 55,
-                        child: Center(
+                        ElevatedButton(
+                          onPressed: () {
+                            // Обработчик нажатия
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: grayBTN,
+                            minimumSize: const Size(170, 55),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            elevation: 0,
+                          ),
                           child: Text(
                             'Проверить VIN',
                             style: TextStyle(color: grayBTNFont),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            child: Image.asset(
-              'assets/images/speedometer.gif',
-              width: 100,
-              height: 100,
-            ),
+                ],
+              ),
+              const SizedBox(height: 20),
+            ],
           ),
         ],
       ),
