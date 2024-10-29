@@ -1,9 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:url_launcher/url_launcher.dart'; // Импортируем пакет
 
 class TopSection extends StatelessWidget {
   const TopSection({super.key});
+
+  // Функция для звонка
+  void _makePhoneCall(String phoneNumber) async {
+    final Uri telUri = Uri(scheme: 'tel', path: phoneNumber);
+    try {
+      if (await canLaunchUrl(telUri)) {
+        await launchUrl(telUri);
+      } else {
+        throw 'Could not launch $phoneNumber';
+      }
+    } catch (e) {
+      print('Error: $e'); // Выводим ошибку в консоль
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +47,17 @@ class TopSection extends StatelessWidget {
                       'assets/icons/tel.svg',
                     ),
                   ),
-                  const Text(
-                    '+ 7 (495) 922-20-20',
-                    style: TextStyle(
-                      fontFamily: 'SF-Pro-Display',
-                      fontSize: 15,
+                  GestureDetector(
+                    onTap: () =>
+                        _makePhoneCall('+74959222020'), // Номер телефона
+                    child: const Text(
+                      '+7 (495) 922-20-20',
+                      style: TextStyle(
+                        fontFamily: 'SF-Pro-Display',
+                        fontSize: 15,
+                        // color: Colors.blue,
+                        // decoration: TextDecoration.underline,
+                      ),
                     ),
                   ),
                 ],

@@ -6,9 +6,9 @@ Color greenPhone = const Color(0Xff02a0a0);
 Color red = Colors.red;
 Color black = Colors.black;
 
-Color gray = Color.fromARGB(255, 111, 111, 111);
+Color gray = const Color.fromARGB(255, 111, 111, 111);
 Color grayBTN = const Color(0Xffc8cad4);
 Color grayBTNFont = const Color(0Xff454545);
 
 // Color white = Color.fromARGB(255, 255, 255, 255);
-Color white = Color(0XffFFFFFFF);
+Color white = const Color(0xfffffffff);

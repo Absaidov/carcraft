@@ -1,4 +1,3 @@
-import 'package:carcraft/animated_box/animated_box.dart';
 import 'package:carcraft/constants/constants.dart';
 import 'package:carcraft/screens/home/database_section.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +42,7 @@ class MiddleSection extends StatelessWidget {
               Column(
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       ElevatedButton(
                         onPressed: () {
@@ -59,11 +58,16 @@ class MiddleSection extends StatelessWidget {
                         ),
                         child: Text(
                           'Банкам',
-                          style: TextStyle(color: grayBTNFont),
+                          style: TextStyle(color: grayBTNFont, shadows: [
+                            Shadow(
+                              color: black,
+                              offset: const Offset(0.4, 0.4),
+                            )
+                          ]),
                         ),
                       ),
-                      ElevatedButton(
-                        onPressed: () {
+                      GestureDetector(
+                        onTap: () {
                           // Обработчик нажатия
                           Navigator.push(
                             context,
@@ -71,42 +75,79 @@ class MiddleSection extends StatelessWidget {
                                 builder: (context) => const DataBaseSection()),
                           );
                         },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: grayBTN,
-                          minimumSize: const Size(170, 55),
-                          shape: RoundedRectangleBorder(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: grayBTN,
                             borderRadius: BorderRadius.circular(5),
                           ),
-                          elevation: 0,
+                          width: 170,
+                          height: 55,
+                          alignment: Alignment.center,
+                          child: Text(
+                            'Автосалонам',
+                            style: TextStyle(color: grayBTNFont, shadows: [
+                              Shadow(
+                                color: black,
+                                offset: const Offset(0.4, 0.4),
+                              )
+                            ]),
+                          ),
                         ),
-                        child: Text(
-                          'Автосалонам',
-                          style: TextStyle(color: grayBTNFont),
-                        ),
+                        // style: ElevatedButton.styleFrom(
+                        //   backgroundColor: grayBTN,
+                        //   minimumSize: const Size(170, 55),
+                        //   shape: RoundedRectangleBorder(
+                        //     borderRadius: BorderRadius.circular(5),
+                        //   ),
+                        //   elevation: 0,
+                        // ),
+                        // child: Text(
+                        //   'Автосалонам',
+                        //   style: TextStyle(color: grayBTNFont),
+                        // ),
                       ),
                     ],
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 13),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        ElevatedButton(
-                          onPressed: () {
+                        GestureDetector(
+                          onTap: () {
                             // Обработчик нажатия
                           },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: grayBTN,
-                            minimumSize: const Size(170, 55),
-                            shape: RoundedRectangleBorder(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: grayBTN,
                               borderRadius: BorderRadius.circular(5),
                             ),
-                            elevation: 0,
+                            width: 170,
+                            height: 55,
+                            alignment: Alignment.center,
+                            child: Text(
+                              'Инвесторам',
+                              style: TextStyle(color: grayBTNFont, shadows: [
+                                Shadow(
+                                  color: black,
+                                  offset: const Offset(0.4, 0.4),
+                                )
+                              ]),
+                            ),
                           ),
-                          child: Text(
-                            'Инвесторам',
-                            style: TextStyle(color: grayBTNFont),
-                          ),
+
+                          // style: ElevatedButton.styleFrom(
+                          //   backgroundColor: grayBTN,
+                          //   minimumSize: const Size(170, 55),
+                          //   shape: RoundedRectangleBorder(
+                          //     borderRadius: BorderRadius.circular(5),
+                          //   ),
+                          //   elevation: 0,
+                          // ),
+                          // child: Text(
+                          //   'Инвесторам',
+                          //   style: TextStyle(color: grayBTNFont),
+                          // ),
                         ),
                         ElevatedButton(
                           onPressed: () {
@@ -122,7 +163,12 @@ class MiddleSection extends StatelessWidget {
                           ),
                           child: Text(
                             'Проверить VIN',
-                            style: TextStyle(color: grayBTNFont),
+                            style: TextStyle(color: grayBTNFont, shadows: [
+                              Shadow(
+                                color: black,
+                                offset: const Offset(0.4, 0.4),
+                              )
+                            ]),
                           ),
                         ),
                       ],
