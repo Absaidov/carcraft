@@ -2,7 +2,10 @@
 import 'package:flutter/material.dart';
 
 // Функция для создания контейнера с текстом
-Widget buildTextBody(BuildContext context, String title) {
+Widget buildTextBody(
+  BuildContext context, {
+  required String title,
+}) {
   final screenWidth = MediaQuery.of(context).size.width;
   return Padding(
     padding: const EdgeInsets.only(top: 20, bottom: 20),

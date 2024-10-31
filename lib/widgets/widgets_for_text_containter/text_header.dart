@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 // Функция для создания заголовка текста
 Widget buildTextHeader(
-  BuildContext context,
-  String text, {
+  BuildContext context, {
+  required String text,
   double fontSize = 26.0,
   Color? color,
 }) {

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:url_launcher/url_launcher.dart'; // Импортируем пакет
+import 'package:url_launcher/url_launcher.dart';
 
 class TopSection extends StatelessWidget {
   const TopSection({super.key});
@@ -10,8 +10,10 @@ class TopSection extends StatelessWidget {
   void _makePhoneCall(String phoneNumber) async {
     final Uri telUri = Uri(scheme: 'tel', path: phoneNumber);
     try {
+      // Проверьте, можно ли запустить URL
       if (await canLaunchUrl(telUri)) {
-        await launchUrl(telUri);
+        // Используйте launchUrl с mode
+        await launchUrl(telUri, mode: LaunchMode.externalApplication);
       } else {
         throw 'Could not launch $phoneNumber';
       }
