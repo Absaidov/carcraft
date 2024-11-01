@@ -1,6 +1,7 @@
 // import 'package:carcraft/constants/constants.dart';
 import 'package:carcraft/screens/home/buttons_on_home_screen/banks.dart';
 import 'package:carcraft/screens/home/buttons_on_home_screen/car_room_show.dart';
+import 'package:carcraft/screens/home/buttons_on_home_screen/check_vin.dart';
 import 'package:carcraft/screens/home/buttons_on_home_screen/investors.dart';
 import 'package:carcraft/widgets/widgest_for_button/build_button.dart';
 import 'package:flutter/material.dart';
@@ -78,7 +79,7 @@ class MiddleSection extends StatelessWidget {
                               buildButton(
                                 context,
                                 text: 'Проверить VIN',
-                                destination: const CarRoomShow(),
+                                destination: const CheckVin(),
                               ),
                             ],
                           ),
