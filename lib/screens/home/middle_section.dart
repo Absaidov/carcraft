@@ -1,5 +1,7 @@
 // import 'package:carcraft/constants/constants.dart';
+import 'package:carcraft/screens/home/buttons_on_home_screen/banks.dart';
 import 'package:carcraft/screens/home/buttons_on_home_screen/car_room_show.dart';
+import 'package:carcraft/screens/home/buttons_on_home_screen/investors.dart';
 import 'package:carcraft/widgets/widgest_for_button/build_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -54,7 +56,7 @@ class MiddleSection extends StatelessWidget {
                               context,
                               text: 'Банкам',
                               destination:
-                                  const CarRoomShow(), //позже исправить на другую страницу
+                                  const Banks(), //позже исправить на другую страницу
                             ),
                             buildButton(
                               context,
@@ -71,7 +73,7 @@ class MiddleSection extends StatelessWidget {
                               buildButton(
                                 context,
                                 text: 'Инвесторам',
-                                destination: const CarRoomShow(),
+                                destination: const Investors(),
                               ),
                               buildButton(
                                 context,

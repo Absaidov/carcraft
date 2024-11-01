@@ -10,7 +10,7 @@ Widget buildTextContainer(
   return Container(
     margin: const EdgeInsets.only(top: 5), //Отступ сверху
     width: MediaQuery.of(context).size.width, // ширина контейнера
-    height: 178,
+    height: 220,
     color: white, // Устанавливаем цвет контейнера
     child: Column(
       crossAxisAlignment:
@@ -18,7 +18,7 @@ Widget buildTextContainer(
       children: [
         Padding(
           padding: const EdgeInsets.only(
-            top: 40,
+            top: 20,
             left: 20,
           ),
           child: Text(
@@ -31,10 +31,7 @@ Widget buildTextContainer(
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(
-            top: 10,
-            left: 20,
-          ),
+          padding: const EdgeInsets.only(top: 10, left: 20, right: 15),
           child: Text(
             subtitle,
             style: TextStyle(

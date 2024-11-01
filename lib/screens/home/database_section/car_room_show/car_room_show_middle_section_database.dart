@@ -4,8 +4,8 @@ import 'package:carcraft/widgets/widgets_for_text_containter/text_header.dart';
 import 'package:carcraft/widgets/widgets_for_text_containter/text_container.dart';
 import 'package:flutter/material.dart';
 
-class MiddleSectionDatabase extends StatelessWidget {
-  const MiddleSectionDatabase({super.key});
+class CarRoomShowMiddleSectionDatabase extends StatelessWidget {
+  const CarRoomShowMiddleSectionDatabase({super.key});
 
   @override
   Widget build(BuildContext context) {
