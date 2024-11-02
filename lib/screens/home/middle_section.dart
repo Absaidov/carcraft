@@ -6,6 +6,7 @@ import 'package:carcraft/screens/home/buttons_on_home_screen/investors.dart';
 import 'package:carcraft/widgets/widgest_for_button/build_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lottie/lottie.dart';
 
 class MiddleSection extends StatelessWidget {
   const MiddleSection({super.key});
@@ -26,10 +27,10 @@ class MiddleSection extends StatelessWidget {
                 Positioned(
                   left: -150,
                   top: 330,
-                  child: SvgPicture.asset(
-                    'assets/apped_new2.svg',
+                  child: Lottie.asset(
+                    'assets/json/animated_speed.json',
                     fit: BoxFit.cover,
-                    semanticsLabel: 'Background SVG',
+                    // semanticsLabel: 'Background SVG',
                   ),
                 ),
                 Column(

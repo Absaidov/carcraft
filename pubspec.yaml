@@ -14,6 +14,7 @@ dependencies:
   flutter_svg: ^2.0.10+1
   url_launcher: ^6.3.0
   flutter_masked_text2: ^0.9.0
+  lottie: ^3.1.0
 
 
 dev_dependencies:
@@ -38,6 +39,7 @@ flutter:
     - assets/apped.svg
     - assets/apped_new.svg
     - assets/apped_new2.svg
+    - assets/json/animated_speed.json
 
   fonts:
     - family: Microsoft
