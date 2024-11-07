@@ -1,25 +1,31 @@
+// import 'package:carcraft/main.dart';
 import 'package:flutter/material.dart';
 import 'package:carcraft/constants/constants.dart';
+import 'package:go_router/go_router.dart';
 
 // Функция для создания настраиваемой кнопки с текстом и навигацией с эффектом нажатия
 Widget buildButton(
   BuildContext context, {
   required String text,
-  required Widget destination,
+  // required Widget destination,
+  required String page,
 }) {
   return _ColorChangingButton(
     text: text,
-    destination: destination,
+    // destination: destination,
+    page: page,
   );
 }
 
 class _ColorChangingButton extends StatefulWidget {
   final String text;
-  final Widget destination;
+  // final Widget destination;
+  final String page;
 
   const _ColorChangingButton({
     required this.text,
-    required this.destination,
+    // required this.destination,
+    required this.page,
   });
 
   @override
@@ -41,10 +47,11 @@ class __ColorChangingButtonState extends State<_ColorChangingButton> {
         setState(() {
           _isPressed = false; // Возвращаем состояние при отпускании
         });
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => widget.destination),
-        );
+        context.go(widget.page);
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(builder: (context) => widget.destination),
+        // );
       },
       onTapCancel: () {
         setState(() {

@@ -1,8 +1,6 @@
 import 'package:carcraft/constants/constants.dart';
-// import 'package:carcraft/constants/constants.dart';
 import 'package:carcraft/widgets/widgets_for_text_containter/text_body.dart';
 import 'package:carcraft/widgets/widgets_for_text_containter/text_header.dart';
-// import 'package:carcraft/widgets/widgets_for_text_containter/text_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 
@@ -110,6 +108,100 @@ class CheckVinMiddleSectionDatabase extends StatelessWidget {
                         keyboardType: TextInputType.phone,
                       ),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "E-mail",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontFamily: 'SF-Pro-Display',
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: TextField(
+                              cursorColor: greenPhone,
+                              style: const TextStyle(
+                                // fontFamily: 'SF-Pro-Display',
+                                fontSize: 15,
+                              ),
+                              decoration: InputDecoration(
+                                hintText: 'Введите Вашу почту',
+                                contentPadding:
+                                    const EdgeInsets.only(left: 20, top: 20),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: greenPhone),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: greenPhone,
+                                    width: 2.0,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "Комментарий",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontFamily: 'SF-Pro-Display',
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: SingleChildScrollView(
+                              child: TextField(
+                                cursorColor: greenPhone,
+                                style: const TextStyle(
+                                  fontSize: 15,
+                                ),
+                                maxLines:
+                                    8, // Позволяет полю ввода растягиваться по мере ввода текста
+                                minLines: 8, // Минимальное количество строк
+                                decoration: InputDecoration(
+                                  hintText: 'Введите Ваш комментарий',
+                                  contentPadding:
+                                      const EdgeInsets.only(left: 20, top: 20),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(color: greenPhone),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: greenPhone,
+                                      width: 2.0,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: Container(
+                        height: 70,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: greenPhone,
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),

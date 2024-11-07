@@ -2,6 +2,7 @@ import 'package:carcraft/screens/home/home_screen.dart';
 // import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 // import 'package:url_launcher/url_launcher.dart'; // Импортируем пакет
 
 class InvestorsTopSectionDatabase extends StatelessWidget {
@@ -17,10 +18,11 @@ class InvestorsTopSectionDatabase extends StatelessWidget {
           GestureDetector(
             onTap: () {
               // Обработчик нажатия
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const HomeScreen()),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => const HomeScreen()),
+              // );
+              context.go('/');
             },
             child: SizedBox(
               width: 40,

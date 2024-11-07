@@ -1,8 +1,6 @@
-import 'package:carcraft/screens/home/home_screen.dart';
-// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-// import 'package:url_launcher/url_launcher.dart'; // Импортируем пакет
+import 'package:go_router/go_router.dart';
 
 class BanksTopSectionDatabase extends StatelessWidget {
   const BanksTopSectionDatabase({super.key});
@@ -16,11 +14,7 @@ class BanksTopSectionDatabase extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              // Обработчик нажатия
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const HomeScreen()),
-              );
+              context.go('/');
             },
             child: SizedBox(
               width: 40,
