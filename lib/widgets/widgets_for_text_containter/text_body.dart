@@ -8,7 +8,7 @@ Widget buildTextBody(
 }) {
   final screenWidth = MediaQuery.of(context).size.width;
   return Padding(
-    padding: const EdgeInsets.only(top: 20, bottom: 20),
+    padding: const EdgeInsets.only(top: 15),
     child: SizedBox(
       width: screenWidth * 0.9,
       child: Text(

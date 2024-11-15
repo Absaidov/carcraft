@@ -52,17 +52,12 @@ class MiddleSection extends StatelessWidget {
                             buildButton(
                               context,
                               text: 'Банкам',
-                              // destination:
-                              //     const Banks(), //позже исправить на другую страницу
-                              page:
-                                  '/banks', //позже исправить на другую страницу
+                              page: '/banks',
                             ),
                             buildButton(
                               context,
                               text: 'Автосалонам',
-                              // destination: const CarRoomShow(),
-                              page:
-                                  '/carRoomShow', //позже исправить на другую страницу
+                              page: '/carRoomShow',
                             ),
                           ],
                         ),
@@ -74,16 +69,12 @@ class MiddleSection extends StatelessWidget {
                               buildButton(
                                 context,
                                 text: 'Инвесторам',
-                                // destination: const Investors(),
-                                page:
-                                    '/investors', //позже исправить на другую страницу
+                                page: '/investors',
                               ),
                               buildButton(
                                 context,
                                 text: 'Проверить VIN',
-                                // destination: const CheckVin(),
-                                page:
-                                    '/checkVin', //позже исправить на другую страницу
+                                page: '/checkVin',
                               ),
                             ],
                           ),

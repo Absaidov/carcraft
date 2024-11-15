@@ -1,18 +1,56 @@
 import 'package:carcraft/constants/constants.dart';
+import 'package:carcraft/widgets/widgest_for_button/build_text_field_for_check_vin.dart';
 import 'package:carcraft/widgets/widgets_for_text_containter/text_body.dart';
 import 'package:carcraft/widgets/widgets_for_text_containter/text_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:logger/web.dart';
 
-class CheckVinMiddleSectionDatabase extends StatelessWidget {
+class CheckVinMiddleSectionDatabase extends StatefulWidget {
   const CheckVinMiddleSectionDatabase({super.key});
 
   @override
+  _CheckVinMiddleSectionDatabaseState createState() =>
+      _CheckVinMiddleSectionDatabaseState();
+}
+
+class _CheckVinMiddleSectionDatabaseState
+    extends State<CheckVinMiddleSectionDatabase> {
+  // Контроллеры для каждого текстового поля
+  final nameController = TextEditingController();
+  final phoneController = MaskedTextController(mask: '+7 (000) 000-00-00');
+  final emailController = TextEditingController();
+  final commentController = TextEditingController();
+
+  // Функция для сбора данных и очистки полей
+  void submitForm() {
+    String name = nameController.text;
+    String phone = phoneController.text;
+    String email = emailController.text;
+    String comment = commentController.text;
+    var logger = Logger();
+    // логируем введеные данные пользователем
+    logger.i('Имя: $name');
+    logger.i('Телефон: $phone');
+    logger.i('E-mail: $email');
+    logger.i('Комментарий: $comment');
+
+    // Очистка всех полей
+    nameController.clear();
+    phoneController.clear();
+    emailController.clear();
+    commentController.clear();
+
+    // Уведомление
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Заявка отправлена!')),
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
-    // Создаем контроллер с маской для телефонного номера
-    final phoneController = MaskedTextController(mask: '+7 (000) 000-00-00');
     return Expanded(
-      // Используем Expanded, чтобы ListView занимал всё доступное место
       child: ListView(
         children: <Widget>[
           Column(
@@ -23,7 +61,6 @@ class CheckVinMiddleSectionDatabase extends StatelessWidget {
                 text: 'НАЧАТЬ СОТРУДНИЧЕСТВО',
                 color: greenPhone,
               ),
-              const SizedBox(height: 5),
               buildTextHeader(
                 context,
                 text: 'СЕЙЧАС',
@@ -31,178 +68,77 @@ class CheckVinMiddleSectionDatabase extends StatelessWidget {
               buildTextBody(context,
                   title:
                       '''Оставьте заявку и наш менеджер свяжется с вами, расскажет об условиях и ответит на вопросы '''),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    "Имя",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontFamily: 'SF-Pro-Display',
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: TextField(
-                      cursorColor: greenPhone,
-                      style: const TextStyle(
-                        // fontFamily: 'SF-Pro-Display',
-                        fontSize: 15,
-                      ),
-                      decoration: InputDecoration(
-                        // labelText: 'Имя',
-                        hintText: 'Введите ваше имя',
-                        contentPadding: const EdgeInsets.only(left: 20),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: greenPhone),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: greenPhone,
-                            width: 2.0,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+              buildTextFieldForCheckVin(
+                labelText: 'Имя',
+                controller: nameController,
+                hintText: 'Введите ваше имя',
+                cursorColor: greenPhone,
               ),
-              // const SizedBox(height: 16),
+              buildTextFieldForCheckVin(
+                labelText: 'Телефон',
+                controller: phoneController,
+                hintText: '+7 (___) ___-__-__',
+                cursorColor: greenPhone,
+                keyboardType: TextInputType.phone,
+              ),
+              buildTextFieldForCheckVin(
+                labelText: 'E-mail',
+                controller: emailController,
+                hintText: 'Введите Вашу почту',
+                cursorColor: greenPhone,
+                keyboardType: TextInputType.emailAddress,
+              ),
+              buildTextFieldForCheckVin(
+                numberForTopPadding: 20,
+                labelText: 'Комментарий',
+                controller: commentController,
+                hintText: 'Введите Ваш комментарий',
+                cursorColor: greenPhone,
+                maxLines: 8,
+              ),
               Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "Телефон",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontFamily: 'SF-Pro-Display',
-                        fontWeight: FontWeight.bold,
-                      ),
+                padding: const EdgeInsets.only(top: 10),
+                child: GestureDetector(
+                  onTap: submitForm, // Вызов функции при нажатии
+                  child: Container(
+                    height: 70,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: greenPhone,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: TextField(
-                        controller: phoneController,
-                        cursorColor: greenPhone,
-                        style: const TextStyle(
-                          // fontFamily: 'SF-Pro-Display',
-                          fontSize: 15,
-                        ),
-                        decoration: InputDecoration(
-                          // labelText: 'Телефон',
-                          hintText: '+7 (___) ___-__-__',
-                          contentPadding: const EdgeInsets.only(left: 20),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: greenPhone),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: greenPhone,
-                              width: 2.0,
-                            ),
-                          ),
-                        ),
-                        keyboardType: TextInputType.phone,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
-                            "E-mail",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontFamily: 'SF-Pro-Display',
-                              fontWeight: FontWeight.bold,
+                          const Center(
+                            child: Text(
+                              'ОТПРАВИТЬ ЗАЯВКУ',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: TextField(
-                              cursorColor: greenPhone,
-                              style: const TextStyle(
-                                // fontFamily: 'SF-Pro-Display',
-                                fontSize: 15,
-                              ),
-                              decoration: InputDecoration(
-                                hintText: 'Введите Вашу почту',
-                                contentPadding:
-                                    const EdgeInsets.only(left: 20, top: 20),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: greenPhone),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: greenPhone,
-                                    width: 2.0,
-                                  ),
-                                ),
-                              ),
+                          SizedBox(
+                            width: 40,
+                            height: 35,
+                            child: SvgPicture.asset(
+                              'assets/icons/arrow_on_the_right.svg',
                             ),
                           ),
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "Комментарий",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontFamily: 'SF-Pro-Display',
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: SingleChildScrollView(
-                              child: TextField(
-                                cursorColor: greenPhone,
-                                style: const TextStyle(
-                                  fontSize: 15,
-                                ),
-                                maxLines:
-                                    8, // Позволяет полю ввода растягиваться по мере ввода текста
-                                minLines: 8, // Минимальное количество строк
-                                decoration: InputDecoration(
-                                  hintText: 'Введите Ваш комментарий',
-                                  contentPadding:
-                                      const EdgeInsets.only(left: 20, top: 20),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(color: greenPhone),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: greenPhone,
-                                      width: 2.0,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: Container(
-                        height: 70,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: greenPhone,
-                        ),
-                      ),
-                    )
-                  ],
+                  ),
+                ),
+              ),
+              const Text(
+                'Отправляя заяку, Вы соглашаетесь  с политикой обработки персональных данных',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'SF-Pro-Display',
                 ),
               ),
             ],

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:logger/web.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class TopSection extends StatelessWidget {
@@ -8,17 +9,26 @@ class TopSection extends StatelessWidget {
 
   // Функция для звонка
   void _makePhoneCall(String phoneNumber) async {
+    // Создаём экземпляр логгера
+    var logger = Logger();
     final Uri telUri = Uri(scheme: 'tel', path: phoneNumber);
     try {
-      // Проверьте, можно ли запустить URL
+      logger.i(
+          "Попытка позвонить на номер: $phoneNumber"); // Логируем попытку звонка
+
+      // Проверка, можно ли запустить URL
       if (await canLaunchUrl(telUri)) {
+        logger.i(
+            "Открытие приложения для звонка на номер: $phoneNumber"); // Логируем успешный запуск
         // Используйте launchUrl с mode
         await launchUrl(telUri, mode: LaunchMode.externalApplication);
       } else {
+        logger.e(
+            "Не удалось запустить номер: $phoneNumber"); // Логируем ошибку, если нельзя запустить номер
         throw 'Could not launch $phoneNumber';
       }
     } catch (e) {
-      print('Error: $e'); // Выводим ошибку в консоль
+      logger.e("Ошибка при попытке позвонить: $e"); // Логируем ошибку
     }
   }
 

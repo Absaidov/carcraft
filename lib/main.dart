@@ -10,10 +10,6 @@ import 'screens/home/home_screen.dart';
 
 import 'package:flutter/services.dart';
 
-// void main() {
-//   runApp(const CarCraft());
-// }
-
 void main() {
   // Блокируем ориентацию экрана на портретную
   WidgetsFlutterBinding.ensureInitialized();
