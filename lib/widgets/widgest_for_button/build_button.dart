@@ -19,12 +19,11 @@ Widget buildButton(
 
 class _ColorChangingButton extends StatefulWidget {
   final String text;
-  // final Widget destination;
+
   final String page;
 
   const _ColorChangingButton({
     required this.text,
-    // required this.destination,
     required this.page,
   });
 
@@ -48,10 +47,6 @@ class __ColorChangingButtonState extends State<_ColorChangingButton> {
           _isPressed = false; // Возвращаем состояние при отпускании
         });
         context.go(widget.page);
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(builder: (context) => widget.destination),
-        // );
       },
       onTapCancel: () {
         setState(() {

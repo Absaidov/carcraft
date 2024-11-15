@@ -31,10 +31,15 @@ class _CheckVinMiddleSectionDatabaseState
     String comment = commentController.text;
     var logger = Logger();
     // логируем введеные данные пользователем
-    logger.i('Имя: $name');
+    logger.f('Имя: $name');
     logger.i('Телефон: $phone');
     logger.i('E-mail: $email');
     logger.i('Комментарий: $comment');
+
+    // print('Имя: $name');
+    // print('Телефон: $phone');
+    // print('E-mail: $email');
+    // print('Комментарий: $comment');
 
     // Очистка всех полей
     nameController.clear();

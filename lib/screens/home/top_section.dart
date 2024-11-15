@@ -39,11 +39,19 @@ class TopSection extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SizedBox(
-            width: 40,
-            height: 35,
-            child: SvgPicture.asset(
-              'assets/icons/menu-svgrepo-com.svg',
+          Builder(
+            builder: (context) => GestureDetector(
+              onTap: () {
+                // Открываем боковое меню
+                Scaffold.of(context).openDrawer();
+              },
+              child: SizedBox(
+                width: 40,
+                height: 35,
+                child: SvgPicture.asset(
+                  'assets/icons/menu-svgrepo-com.svg',
+                ),
+              ),
             ),
           ),
           Expanded(
@@ -67,8 +75,6 @@ class TopSection extends StatelessWidget {
                       style: TextStyle(
                         fontFamily: 'SF-Pro-Display',
                         fontSize: 15,
-                        // color: Colors.blue,
-                        // decoration: TextDecoration.underline,
                       ),
                     ),
                   ),
