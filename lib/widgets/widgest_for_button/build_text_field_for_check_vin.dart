@@ -9,6 +9,7 @@ Widget buildTextFieldForCheckVin({
   required Color cursorColor,
   TextInputType keyboardType = TextInputType.text,
   int? maxLines,
+  String? Function(String?)? validator,
 }) {
   return Padding(
     padding: const EdgeInsets.only(top: 10),
@@ -25,7 +26,7 @@ Widget buildTextFieldForCheckVin({
         ),
         Padding(
           padding: const EdgeInsets.only(top: 10),
-          child: TextField(
+          child: TextFormField(
             controller: controller,
             cursorColor: cursorColor,
             style: const TextStyle(
@@ -38,7 +39,7 @@ Widget buildTextFieldForCheckVin({
               contentPadding:
                   EdgeInsets.only(left: 20, top: numberForTopPadding),
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: cursorColor),
+                borderSide: BorderSide(color: cursorColor), // Нормальный стиль
               ),
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
@@ -46,7 +47,21 @@ Widget buildTextFieldForCheckVin({
                   width: 2.0,
                 ),
               ),
+              errorBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: cursorColor), // Оставляем стиль
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: cursorColor,
+                  width: 2.0,
+                ),
+              ),
+              errorStyle: const TextStyle(
+                fontSize: 14,
+                color: Colors.red, // Цвет сообщения об ошибке
+              ), // Сообщение об ошибке
             ),
+            validator: validator,
           ),
         ),
       ],

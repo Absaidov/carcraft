@@ -23,132 +23,169 @@ class _CheckVinMiddleSectionDatabaseState
   final emailController = TextEditingController();
   final commentController = TextEditingController();
 
+  // Глобальный ключ для формы
+  final _formKey = GlobalKey<FormState>();
+
   // Функция для сбора данных и очистки полей
   void submitForm() {
-    String name = nameController.text;
-    String phone = phoneController.text;
-    String email = emailController.text;
-    String comment = commentController.text;
-    var logger = Logger();
-    // логируем введеные данные пользователем
-    logger.f('Имя: $name');
-    logger.i('Телефон: $phone');
-    logger.i('E-mail: $email');
-    logger.i('Комментарий: $comment');
+    if (_formKey.currentState?.validate() ?? false) {
+      // Если форма валидна, собираем данные
+      String name = nameController.text;
+      String phone = phoneController.text;
+      String email = emailController.text;
+      String comment = commentController.text;
 
-    // print('Имя: $name');
-    // print('Телефон: $phone');
-    // print('E-mail: $email');
-    // print('Комментарий: $comment');
+      var logger = Logger();
+      logger.f('Имя: $name');
+      logger.i('Телефон: $phone');
+      logger.i('E-mail: $email');
+      logger.i('Комментарий: $comment');
 
-    // Очистка всех полей
-    nameController.clear();
-    phoneController.clear();
-    emailController.clear();
-    commentController.clear();
+      // Очистка всех полей
+      nameController.clear();
+      phoneController.clear();
+      emailController.clear();
+      commentController.clear();
 
-    // Уведомление
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Заявка отправлена!')),
-    );
+      // Уведомление
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Заявка отправлена!')),
+      );
+    } else {
+      // Если форма не валидна, показываем сообщение
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Заполните все обязательные поля!')),
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: ListView(
-        children: <Widget>[
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              buildTextHeader(
-                context,
-                text: 'НАЧАТЬ СОТРУДНИЧЕСТВО',
-                color: greenPhone,
-              ),
-              buildTextHeader(
-                context,
-                text: 'СЕЙЧАС',
-              ),
-              buildTextBody(context,
-                  title:
-                      '''Оставьте заявку и наш менеджер свяжется с вами, расскажет об условиях и ответит на вопросы '''),
-              buildTextFieldForCheckVin(
-                labelText: 'Имя',
-                controller: nameController,
-                hintText: 'Введите ваше имя',
-                cursorColor: greenPhone,
-              ),
-              buildTextFieldForCheckVin(
-                labelText: 'Телефон',
-                controller: phoneController,
-                hintText: '+7 (___) ___-__-__',
-                cursorColor: greenPhone,
-                keyboardType: TextInputType.phone,
-              ),
-              buildTextFieldForCheckVin(
-                labelText: 'E-mail',
-                controller: emailController,
-                hintText: 'Введите Вашу почту',
-                cursorColor: greenPhone,
-                keyboardType: TextInputType.emailAddress,
-              ),
-              buildTextFieldForCheckVin(
-                numberForTopPadding: 20,
-                labelText: 'Комментарий',
-                controller: commentController,
-                hintText: 'Введите Ваш комментарий',
-                cursorColor: greenPhone,
-                maxLines: 8,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10),
-                child: GestureDetector(
-                  onTap: submitForm, // Вызов функции при нажатии
-                  child: Container(
-                    height: 70,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: greenPhone,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Center(
-                            child: Text(
-                              'ОТПРАВИТЬ ЗАЯВКУ',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
+      child: Form(
+        key: _formKey, // Привязываем ключ формы
+        child: ListView(
+          children: <Widget>[
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                buildTextHeader(
+                  context,
+                  text: 'НАЧАТЬ СОТРУДНИЧЕСТВО',
+                  color: greenPhone,
+                ),
+                buildTextHeader(
+                  context,
+                  text: 'СЕЙЧАС',
+                ),
+                buildTextBody(context,
+                    title:
+                        '''Оставьте заявку и наш менеджер свяжется с вами, расскажет об условиях и ответит на вопросы '''),
+                buildTextFieldForCheckVin(
+                  labelText: 'Имя',
+                  controller: nameController,
+                  hintText: 'Введите ваше имя',
+                  cursorColor: greenPhone,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Введите имя';
+                    }
+                    return null;
+                  },
+                ),
+                buildTextFieldForCheckVin(
+                  labelText: 'Телефон',
+                  controller: phoneController,
+                  hintText: '+7 (___) ___-__-__',
+                  cursorColor: greenPhone,
+                  keyboardType: TextInputType.phone,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Введите номер телефона';
+                    }
+                    return null;
+                  },
+                ),
+                buildTextFieldForCheckVin(
+                  labelText: 'E-mail',
+                  controller: emailController,
+                  hintText: 'Введите Вашу почту',
+                  cursorColor: greenPhone,
+                  keyboardType: TextInputType.emailAddress,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Введите адрес электронной почты';
+                    }
+                    // Простая проверка валидности email
+                    if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+                      return 'Введите корректный email';
+                    }
+                    return null;
+                  },
+                ),
+                buildTextFieldForCheckVin(
+                  numberForTopPadding: 20,
+                  labelText: 'Комментарий',
+                  controller: commentController,
+                  hintText: 'Введите Ваш комментарий',
+                  cursorColor: greenPhone,
+                  maxLines: 8,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Введите комментарий';
+                    }
+                    return null;
+                  },
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: GestureDetector(
+                    onTap: submitForm, // Вызов функции при нажатии
+                    child: Container(
+                      height: 70,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: greenPhone,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Center(
+                              child: Text(
+                                'ОТПРАВИТЬ ЗАЯВКУ',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            width: 40,
-                            height: 35,
-                            child: SvgPicture.asset(
-                              'assets/icons/arrow_on_the_right.svg',
+                            SizedBox(
+                              width: 40,
+                              height: 35,
+                              child: SvgPicture.asset(
+                                'assets/icons/arrow_on_the_right.svg',
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              const Text(
-                'Отправляя заяку, Вы соглашаетесь  с политикой обработки персональных данных',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'SF-Pro-Display',
+                const Text(
+                  'Отправляя заявку, Вы соглашаетесь с политикой обработки персональных данных',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'SF-Pro-Display',
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
