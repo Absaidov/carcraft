@@ -59,7 +59,7 @@ class __ColorChangingButtonState extends State<_ColorChangingButton> {
           color: _isPressed ? greenPhone : grayBTN, // Цвет фона при нажатии
           borderRadius: BorderRadius.circular(5.0),
         ),
-        width: 195.0,
+        // width: 195.0,
         height: 55.0,
         alignment: Alignment.center,
         child: Text(

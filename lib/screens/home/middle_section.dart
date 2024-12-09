@@ -47,34 +47,48 @@ class MiddleSection extends StatelessWidget {
                     Column(
                       children: [
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            buildButton(
-                              context,
-                              text: 'Банкам',
-                              page: '/banks',
+                            Expanded(
+                              child: buildButton(
+                                context,
+                                text: 'Банкам',
+                                page: '/banks',
+                              ),
                             ),
-                            buildButton(
-                              context,
-                              text: 'Автосалонам',
-                              page: '/carRoomShow',
+                            const SizedBox(
+                              width: 5,
                             ),
+                            Expanded(
+                              child: buildButton(
+                                context,
+                                text: 'Автосалонам',
+                                page: '/carRoomShow',
+                              ),
+                            )
                           ],
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 13),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              buildButton(
-                                context,
-                                text: 'Инвесторам',
-                                page: '/investors',
+                              Expanded(
+                                child: buildButton(
+                                  context,
+                                  text: 'Инвесторам',
+                                  page: '/investors',
+                                ),
                               ),
-                              buildButton(
-                                context,
-                                text: 'Проверить VIN',
-                                page: '/checkVin',
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              Expanded(
+                                child: buildButton(
+                                  context,
+                                  text: 'Проверить VIN',
+                                  page: '/checkVin',
+                                ),
                               ),
                             ],
                           ),
