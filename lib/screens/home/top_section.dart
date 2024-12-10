@@ -1,34 +1,39 @@
-// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:logger/web.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:logger/logger.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class TopSection extends StatelessWidget {
   const TopSection({super.key});
 
-  // Функция для звонка
-  void _makePhoneCall(String phoneNumber) async {
-    // Создаём экземпляр логгера
+  Future<void> _makePhoneCall(String phoneNumber) async {
     var logger = Logger();
     final Uri telUri = Uri(scheme: 'tel', path: phoneNumber);
-    try {
-      logger.i(
-          "Попытка позвонить на номер: $phoneNumber"); // Логируем попытку звонка
 
-      // Проверка, можно ли запустить URL
-      if (await canLaunchUrl(telUri)) {
-        logger.i(
-            "Открытие приложения для звонка на номер: $phoneNumber"); // Логируем успешный запуск
-        // Используйте launchUrl с mode
-        await launchUrl(telUri, mode: LaunchMode.externalApplication);
-      } else {
-        logger.e(
-            "Не удалось запустить номер: $phoneNumber"); // Логируем ошибку, если нельзя запустить номер
-        throw 'Could not launch $phoneNumber';
+    // Проверка разрешения
+    PermissionStatus status = await Permission.phone.status;
+    if (!status.isGranted) {
+      logger.i("Запрос разрешения на звонок");
+      status = await Permission.phone.request();
+    }
+
+    if (status.isGranted) {
+      try {
+        logger.i("Попытка позвонить на номер: $phoneNumber");
+
+        // Проверка, можно ли запустить URL
+        if (await canLaunchUrl(telUri)) {
+          logger.i("Выполняется звонок на номер: $phoneNumber");
+          await launchUrl(telUri); // Запуск URL
+        } else {
+          logger.e("Не удалось найти обработчик для номера: $phoneNumber");
+        }
+      } catch (e) {
+        logger.e("Ошибка при попытке позвонить: $e");
       }
-    } catch (e) {
-      logger.e("Ошибка при попытке позвонить: $e"); // Логируем ошибку
+    } else {
+      logger.e("Разрешение на звонок не предоставлено");
     }
   }
 
@@ -42,7 +47,6 @@ class TopSection extends StatelessWidget {
           Builder(
             builder: (context) => GestureDetector(
               onTap: () {
-                // Открываем боковое меню
                 Scaffold.of(context).openDrawer();
               },
               child: SizedBox(
@@ -68,8 +72,7 @@ class TopSection extends StatelessWidget {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () =>
-                        _makePhoneCall('+74959222020'), // Номер телефона
+                    onTap: () => _makePhoneCall('+74959222020'),
                     child: const Text(
                       '+7 (495) 922-20-20',
                       style: TextStyle(
