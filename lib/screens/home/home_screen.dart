@@ -1,4 +1,7 @@
+// import 'package:carcraft/main.dart';
+import 'package:carcraft/constants/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'middle_section.dart';
 import 'top_section.dart';
 
@@ -10,58 +13,67 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       drawer: Drawer(
         // Содержимое бокового меню, надо изменить под тему приложения
+        backgroundColor: grayBTN,
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
+            DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: gray,
               ),
-              child: Text(
+              child: const Text(
                 'Меню',
                 style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
+                  // color: Colors.white,
+                  fontSize: 44,
                 ),
               ),
             ),
             ListTile(
-              leading: const Icon(Icons.production_quantity_limits),
-              title: const Text('Продукты'),
+              leading: Icon(
+                Icons.credit_card,
+                color: grayBTNFont,
+              ),
+              title: Text(
+                'Продукты',
+                style: TextStyle(
+                  color: grayBTNFont,
+                ),
+              ),
               onTap: () {
                 Navigator.pop(context); // Закрываем Drawer
               },
             ),
             ListTile(
-              leading: const Icon(Icons.settings),
+              leading: const Icon(Icons.account_balance),
               title: const Text('Банкам'),
               onTap: () {
-                Navigator.pop(context); // Закрываем Drawer
+                context.go('/banks');
               },
             ),
             ListTile(
-              leading: const Icon(Icons.settings),
+              leading: const Icon(Icons.car_crash),
               title: const Text('Автосалонам'),
               onTap: () {
-                Navigator.pop(context); // Закрываем Drawer
+                context.go('/carRoomShow');
               },
             ),
             ListTile(
-              leading: const Icon(Icons.home),
+              leading: const Icon(Icons.account_balance_wallet),
               title: const Text('Инвесторам'),
               onTap: () {
-                Navigator.pop(context); // Закрываем Drawer
+                context.go('/investors');
               },
             ),
             ListTile(
-              leading: const Icon(Icons.settings),
+              leading: const Icon(Icons.group),
               title: const Text('Наша команда'),
               onTap: () {
                 Navigator.pop(context); // Закрываем Drawer
               },
             ),
             ListTile(
-              leading: const Icon(Icons.settings),
+              leading: const Icon(Icons.feed),
               title: const Text('Новости'),
               onTap: () {
                 Navigator.pop(context); // Закрываем Drawer

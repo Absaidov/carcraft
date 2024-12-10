@@ -17,7 +17,7 @@ Widget buildTextHeader(
       style: TextStyle(
         fontSize: fontSize,
         color:
-            color ?? white, // Используйте заданный цвет или черный по умолчанию
+            color ?? white, // Используем заданный цвет или черный по умолчанию
         fontFamily: 'SF-Pro-Display',
       ),
       textAlign: TextAlign.start,

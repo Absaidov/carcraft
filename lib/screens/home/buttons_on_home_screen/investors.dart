@@ -1,5 +1,6 @@
+import 'package:carcraft/constants/constants.dart';
 import 'package:carcraft/screens/home/database_section/investors/investors_middle_section_database.dart';
-import 'package:carcraft/widgets/widgets_for_text_containter/build_top_section.dart';
+// import 'package:carcraft/widgets/widgets_for_text_containter/build_top_section.dart';
 import 'package:flutter/material.dart';
 
 class Investors extends StatelessWidget {
@@ -15,10 +16,9 @@ class Investors extends StatelessWidget {
           padding: const EdgeInsets.only(left: 15, right: 15, top: 8),
           child: Column(
             children: [
-              buildTopSection(
-                context: context,
-                iconPath: 'assets/icons/back_arrow.svg',
-                route: '/',
+              AppBar(
+                backgroundColor: Colors.transparent, // Прозрачный фон
+                iconTheme: IconThemeData(color: greenPhone),
               ),
               const InvestorsMiddleSectionDatabase(),
             ],
