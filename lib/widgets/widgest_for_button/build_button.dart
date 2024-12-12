@@ -1,71 +1,68 @@
-// import 'package:carcraft/main.dart';
 import 'package:flutter/material.dart';
 import 'package:carcraft/constants/constants.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+import '../../provider/button_provider.dart';
+// import 'button_provider.dart';
 
 // Функция для создания настраиваемой кнопки с текстом и навигацией с эффектом нажатия
 Widget buildButton(
   BuildContext context, {
   required String text,
-  // required Widget destination,
   required String page,
 }) {
-  return _ColorChangingButton(
-    text: text,
-    // destination: destination,
-    page: page,
+  return ChangeNotifierProvider(
+    create: (_) => ButtonProvider(),
+    child: ColorChangingButton(
+      text: text,
+      page: page,
+    ),
   );
 }
 
-class _ColorChangingButton extends StatefulWidget {
+class ColorChangingButton extends StatelessWidget {
   final String text;
-
   final String page;
 
-  const _ColorChangingButton({
+  const ColorChangingButton({
+    super.key,
     required this.text,
     required this.page,
   });
 
   @override
-  __ColorChangingButtonState createState() => __ColorChangingButtonState();
-}
-
-class __ColorChangingButtonState extends State<_ColorChangingButton> {
-  bool _isPressed = false;
-
-  @override
   Widget build(BuildContext context) {
+    // final provider = Provider.of<ButtonProvider>(context);
+    final isPressed =
+        context.watch<ButtonProvider>().isPressed; // Слушаем состояние
+
     return GestureDetector(
-      onTapDown: (_) {
-        setState(() {
-          _isPressed = true; // Устанавливаем состояние нажатия
-        });
-      },
+      onTapDown: (_) => context.read<ButtonProvider>().setPressed(true),
       onTapUp: (_) {
-        setState(() {
-          _isPressed = false; // Возвращаем состояние при отпускании
-        });
-        context.go(widget.page);
+        context.read<ButtonProvider>().setPressed(false);
+        context.go(page);
       },
-      onTapCancel: () {
-        setState(() {
-          _isPressed = false; // Возвращаем состояние при отмене
-        });
-      },
+      onTapCancel: () => context.read<ButtonProvider>().setPressed(false),
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200), // Длительность анимации
+        duration: const Duration(milliseconds: 200),
         decoration: BoxDecoration(
-          color: _isPressed ? greenPhone : grayBTN, // Цвет фона при нажатии
+          color: isPressed ? greenPhone : grayBTN,
           borderRadius: BorderRadius.circular(5.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.5),
+              // spreadRadius: _isHovered ? 5 : 2,
+              // blurRadius: _isHovered ? 7 : 5,
+              offset: const Offset(0, 3),
+            ),
+          ],
         ),
-        // width: 195.0,
         height: 55.0,
         alignment: Alignment.center,
         child: Text(
-          widget.text,
+          text,
           style: TextStyle(
-            color: _isPressed ? white : grayBTNFont,
+            color: isPressed ? white : grayBTNFont,
           ),
         ),
       ),

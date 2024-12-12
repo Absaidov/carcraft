@@ -6,34 +6,54 @@ import 'package:permission_handler/permission_handler.dart';
 
 class TopSection extends StatelessWidget {
   const TopSection({super.key});
+  // * Временно закоментировал код, где приложение дополнительно запрашивает разрешение
+  // * на доступ к приложению ЗВОНОК. На Android работает, на iPhone нет.
+  // Future<void> _makePhoneCall(String phoneNumber) async {
+  //   var logger = Logger();
+  //   final Uri telUri = Uri(
+  //     scheme: 'tel',
+  //     path: phoneNumber,
+  //   );
 
+  //   // Проверка разрешения
+  //   PermissionStatus status = await Permission.phone.status;
+  //   if (!status.isGranted) {
+  //     logger.i("Запрос разрешения на звонок");
+  //     status = await Permission.phone.request();
+  //   }
+
+  //   if (status.isGranted) {
+  //     try {
+  //       logger.i("Попытка позвонить на номер: $phoneNumber");
+
+  //       // Проверка, можно ли запустить URL
+  //       if (await canLaunchUrl(telUri)) {
+  //         logger.i("Выполняется звонок на номер: $phoneNumber");
+  //         await launchUrl(telUri); // Запуск URL
+  //       } else {
+  //         logger.e("Не удалось найти обработчик для номера: $phoneNumber");
+  //       }
+  //     } catch (e) {
+  //       logger.e("Ошибка при попытке позвонить: $e");
+  //     }
+  //   } else {
+  //     logger.e("Разрешение на звонок не предоставлено");
+  //   }
+  // }
+
+  // * Временное решение, чтобы функция звонка работала на всех устройствах
   Future<void> _makePhoneCall(String phoneNumber) async {
     var logger = Logger();
-    final Uri telUri = Uri(scheme: 'tel', path: phoneNumber);
-
-    // Проверка разрешения
-    PermissionStatus status = await Permission.phone.status;
-    if (!status.isGranted) {
-      logger.i("Запрос разрешения на звонок");
-      status = await Permission.phone.request();
-    }
-
-    if (status.isGranted) {
-      try {
-        logger.i("Попытка позвонить на номер: $phoneNumber");
-
-        // Проверка, можно ли запустить URL
-        if (await canLaunchUrl(telUri)) {
-          logger.i("Выполняется звонок на номер: $phoneNumber");
-          await launchUrl(telUri); // Запуск URL
-        } else {
-          logger.e("Не удалось найти обработчик для номера: $phoneNumber");
-        }
-      } catch (e) {
-        logger.e("Ошибка при попытке позвонить: $e");
-      }
+    final Uri launchUri = Uri(
+      scheme: 'tel',
+      path: phoneNumber,
+    );
+    if (await canLaunchUrl(launchUri)) {
+      logger.i('Пытаюсь совершить звонок на номер: $phoneNumber');
+      await launchUrl(launchUri);
     } else {
-      logger.e("Разрешение на звонок не предоставлено");
+      logger.i(
+          'Не удалось совершить звонок. Возможно, телефонные функции не разрешены.');
     }
   }
 

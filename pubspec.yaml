@@ -21,6 +21,8 @@ dependencies:
   circular_menu: ^4.0.0
   permission_handler: ^11.3.1
   icons_launcher: ^2.0.7
+  provider: ^6.1.2
+  # flutter_native_splash: ^2.2.16
 
 
 dev_dependencies:
@@ -46,6 +48,7 @@ flutter:
     - assets/apped_new.svg
     - assets/apped_new2.svg
     - assets/json/animated_speed.json
+    - assets/json/animat.json
 
   fonts:
     - family: Microsoft
@@ -62,4 +65,12 @@ icons_launcher:
     android:
       enable: true
     ios:
-      enable: true           
+      enable: true
+
+# flutter_native_splash:
+#   # color: "#ffffff" # Цвет фона
+#   color: "#c8cad4" # Цвет фона
+#   image: assets/icons/carCraftLogo.png # Путь к изображению
+#   fill: true
+#   android: true
+#   ios: true          

@@ -23,7 +23,7 @@ class MiddleSection extends StatelessWidget {
                   left: -150,
                   top: 330,
                   child: Lottie.asset(
-                    'assets/json/animated_speed.json',
+                    'assets/json/animat.json',
                     fit: BoxFit.cover,
                     // semanticsLabel: 'Background SVG',
                   ),
