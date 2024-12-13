@@ -19,7 +19,7 @@
 
     [Ссылка](https://example.com)
 
-    <!-- Здесь заканчивается Markdown -->
+
 </body>
 </html>
 
