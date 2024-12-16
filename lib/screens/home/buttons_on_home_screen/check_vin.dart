@@ -20,7 +20,7 @@ class CheckVin extends StatelessWidget {
                 backgroundColor: Colors.transparent, // Прозрачный фон
                 iconTheme: IconThemeData(color: greenPhone),
               ),
-              const CheckVinMiddleSectionDatabase(),
+              CheckVinMiddleSectionDatabase(),
             ],
           ),
         ),

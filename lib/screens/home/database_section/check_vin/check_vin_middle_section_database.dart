@@ -1,56 +1,36 @@
 import 'package:carcraft/constants/constants.dart';
+import 'package:carcraft/provider/form_data_provider.dart';
 import 'package:carcraft/widgets/widgest_for_button/build_text_field_for_check_vin.dart';
 import 'package:carcraft/widgets/widgets_for_text_containter/text_body.dart';
 import 'package:carcraft/widgets/widgets_for_text_containter/text_header.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_masked_text2/flutter_masked_text2.dart';
+// import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:logger/web.dart';
+import 'package:provider/provider.dart';
 
-class CheckVinMiddleSectionDatabase extends StatefulWidget {
-  const CheckVinMiddleSectionDatabase({super.key});
-
-  @override
-  _CheckVinMiddleSectionDatabaseState createState() =>
-      _CheckVinMiddleSectionDatabaseState();
-}
-
-class _CheckVinMiddleSectionDatabaseState
-    extends State<CheckVinMiddleSectionDatabase> {
-  // Контроллеры для каждого текстового поля
-  final nameController = TextEditingController();
-  final phoneController = MaskedTextController(mask: '+7 (000) 000-00-00');
-  final emailController = TextEditingController();
-  final commentController = TextEditingController();
+class CheckVinMiddleSectionDatabase extends StatelessWidget {
+  CheckVinMiddleSectionDatabase({super.key});
 
   // Глобальный ключ для формы
   final _formKey = GlobalKey<FormState>();
 
   // Функция для сбора данных и очистки полей
-  void submitForm() {
+  void submitForm(BuildContext context) {
     if (_formKey.currentState?.validate() ?? false) {
-      // Если форма валидна, собираем данные
-      String name = nameController.text;
-      String phone = phoneController.text;
-      String email = emailController.text;
-      String comment = commentController.text;
-
+      var formDataProvider = context.read<FormDataProvider>();
       var logger = Logger();
-      logger.f('Имя: $name');
-      logger.i('Телефон: $phone');
-      logger.i('E-mail: $email');
-      logger.i('Комментарий: $comment');
-
-      // Очистка всех полей
-      nameController.clear();
-      phoneController.clear();
-      emailController.clear();
-      commentController.clear();
+      logger.f('Имя: ${formDataProvider.name}');
+      logger.i('Телефон: ${formDataProvider.phone}');
+      logger.i('E-mail: ${formDataProvider.email}');
+      logger.i('Комментарий: ${formDataProvider.comment}');
 
       // Уведомление
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Заявка отправлена!')),
       );
+      //Очищаем поле после отправки данных
+      formDataProvider.clearFields();
     } else {
       // Если форма не валидна, показываем сообщение
       ScaffoldMessenger.of(context).showSnackBar(
@@ -83,7 +63,7 @@ class _CheckVinMiddleSectionDatabaseState
                         '''Оставьте заявку и наш менеджер свяжется с вами, расскажет об условиях и ответит на вопросы '''),
                 buildTextFieldForCheckVin(
                   labelText: 'Имя',
-                  controller: nameController,
+                  controller: context.read<FormDataProvider>().nameController,
                   hintText: 'Введите ваше имя',
                   cursorColor: greenPhone,
                   validator: (value) {
@@ -95,7 +75,7 @@ class _CheckVinMiddleSectionDatabaseState
                 ),
                 buildTextFieldForCheckVin(
                   labelText: 'Телефон',
-                  controller: phoneController,
+                  controller: context.read<FormDataProvider>().phoneController,
                   hintText: '+7 (___) ___-__-__',
                   cursorColor: greenPhone,
                   keyboardType: TextInputType.phone,
@@ -108,7 +88,7 @@ class _CheckVinMiddleSectionDatabaseState
                 ),
                 buildTextFieldForCheckVin(
                   labelText: 'E-mail',
-                  controller: emailController,
+                  controller: context.read<FormDataProvider>().emailController,
                   hintText: 'Введите Вашу почту',
                   cursorColor: greenPhone,
                   keyboardType: TextInputType.emailAddress,
@@ -126,7 +106,8 @@ class _CheckVinMiddleSectionDatabaseState
                 buildTextFieldForCheckVin(
                   numberForTopPadding: 20,
                   labelText: 'Комментарий',
-                  controller: commentController,
+                  controller:
+                      context.read<FormDataProvider>().commentController,
                   hintText: 'Введите Ваш комментарий',
                   cursorColor: greenPhone,
                   maxLines: 8,
@@ -140,7 +121,8 @@ class _CheckVinMiddleSectionDatabaseState
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: GestureDetector(
-                    onTap: submitForm, // Вызов функции при нажатии
+                    onTap: () => submitForm(
+                        context), // Передаем функцию в виде замыкания
                     child: Container(
                       height: 70,
                       decoration: BoxDecoration(

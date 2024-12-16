@@ -1,10 +1,12 @@
 import 'package:carcraft/constants/constants.dart';
+import 'package:carcraft/provider/form_data_provider.dart';
 import 'package:carcraft/screens/home/buttons_on_home_screen/banks.dart';
 import 'package:carcraft/screens/home/buttons_on_home_screen/car_room_show.dart';
 import 'package:carcraft/screens/home/buttons_on_home_screen/check_vin.dart';
 import 'package:carcraft/screens/home/buttons_on_home_screen/investors.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 import 'screens/home/home_screen.dart';
 
@@ -25,28 +27,35 @@ class CarCraft extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      theme: ThemeData(
-          fontFamily: 'Microsoft',
-          scaffoldBackgroundColor: blue,
-          colorScheme: ColorScheme(
-            brightness: Brightness.light,
-            primary: black,
-            onPrimary: gray,
-            secondary: gray,
-            onSecondary: gray,
-            error: red,
-            onError: red,
-            surface: gray,
-            onSurface: white,
-          ),
-          textSelectionTheme: TextSelectionThemeData(
-            cursorColor: greenPhone, // Цвет курсора
-            selectionColor: greenPhone, // Цвет выделенного текста
-            selectionHandleColor: white, // Цвет ручки выделения
-          )),
-      debugShowCheckedModeBanner: false,
-      routerConfig: _router,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => FormDataProvider(),
+        )
+      ],
+      child: MaterialApp.router(
+        theme: ThemeData(
+            fontFamily: 'Microsoft',
+            scaffoldBackgroundColor: blue,
+            colorScheme: ColorScheme(
+              brightness: Brightness.light,
+              primary: black,
+              onPrimary: gray,
+              secondary: gray,
+              onSecondary: gray,
+              error: red,
+              onError: red,
+              surface: gray,
+              onSurface: white,
+            ),
+            textSelectionTheme: TextSelectionThemeData(
+              cursorColor: greenPhone, // Цвет курсора
+              selectionColor: greenPhone, // Цвет выделенного текста
+              selectionHandleColor: white, // Цвет ручки выделения
+            )),
+        debugShowCheckedModeBanner: false,
+        routerConfig: _router,
+      ),
     );
   }
 }
