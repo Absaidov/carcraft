@@ -1,4 +1,5 @@
 import 'package:carcraft/constants/constants.dart';
+import 'package:carcraft/db_service.dart';
 import 'package:carcraft/provider/form_data_provider.dart';
 import 'package:carcraft/widgets/widgest_for_button/build_text_field_for_check_vin.dart';
 import 'package:carcraft/widgets/widgets_for_text_containter/text_body.dart';
@@ -14,23 +15,41 @@ class CheckVinMiddleSectionDatabase extends StatelessWidget {
 
   // Глобальный ключ для формы
   final _formKey = GlobalKey<FormState>();
+  final DatabaseService dbService = DatabaseService();
 
   // Функция для сбора данных и очистки полей
-  void submitForm(BuildContext context) {
+  Future<void> submitForm(BuildContext context) async {
     if (_formKey.currentState?.validate() ?? false) {
       var formDataProvider = context.read<FormDataProvider>();
-      var logger = Logger();
-      logger.f('Имя: ${formDataProvider.name}');
-      logger.i('Телефон: ${formDataProvider.phone}');
-      logger.i('E-mail: ${formDataProvider.email}');
-      logger.i('Комментарий: ${formDataProvider.comment}');
 
-      // Уведомление
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Заявка отправлена!')),
-      );
-      //Очищаем поле после отправки данных
-      formDataProvider.clearFields();
+      //* Подключение к базе данных яндекса
+      await dbService.connect();
+      var logger = Logger();
+      // logger.f('Имя: ${formDataProvider.name}');
+      // logger.i('Телефон: ${formDataProvider.phone}');
+      // logger.i('E-mail: ${formDataProvider.email}');
+      // logger.i('Комментарий: ${formDataProvider.comment}');
+      try {
+        await dbService.insertFormData(
+          formDataProvider.name,
+          formDataProvider.phone,
+          formDataProvider.email,
+          formDataProvider.comment,
+        );
+        // Уведомление
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Заявка отправлена!')),
+        );
+        //Очищаем поле после отправки данных
+        formDataProvider.clearFields();
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Ошибка: $e')),
+        );
+        logger.i(e);
+      } finally {
+        await dbService.disconnect();
+      }
     } else {
       // Если форма не валидна, показываем сообщение
       ScaffoldMessenger.of(context).showSnackBar(
