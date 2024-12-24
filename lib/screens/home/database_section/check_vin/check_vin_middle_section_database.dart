@@ -13,45 +13,47 @@ import 'package:provider/provider.dart';
 class CheckVinMiddleSectionDatabase extends StatelessWidget {
   CheckVinMiddleSectionDatabase({super.key});
 
-  // Глобальный ключ для формы
+  //* Глобальный ключ для формы
   final _formKey = GlobalKey<FormState>();
+  //* Создание объекта типа DatabaseService
   final DatabaseService dbService = DatabaseService();
 
-  // Функция для сбора данных и очистки полей
+  //* Функция для сбора данных и очистки полей
   Future<void> submitForm(BuildContext context) async {
     if (_formKey.currentState?.validate() ?? false) {
       var formDataProvider = context.read<FormDataProvider>();
 
       //* Подключение к базе данных яндекса
       await dbService.connect();
+      //* Создание объекта для логирования
       var logger = Logger();
-      // logger.f('Имя: ${formDataProvider.name}');
-      // logger.i('Телефон: ${formDataProvider.phone}');
-      // logger.i('E-mail: ${formDataProvider.email}');
-      // logger.i('Комментарий: ${formDataProvider.comment}');
       try {
+        //* Передаем полученные данные от пользователя в БД POSGRES
         await dbService.insertFormData(
           formDataProvider.name,
           formDataProvider.phone,
           formDataProvider.email,
           formDataProvider.comment,
         );
-        // Уведомление
+        //* Уведомляем пользователя об успешной отрпавке
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Заявка отправлена!')),
         );
-        //Очищаем поле после отправки данных
+        //* Очищаем поле после отправки данных
         formDataProvider.clearFields();
+        //* перехватываем ошибку и выводим ее в приложении
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Ошибка: $e')),
         );
+        //* Логируем ошибку в консоли редактора
         logger.i(e);
+        //* Закрываем соединение с БД
       } finally {
         await dbService.disconnect();
       }
     } else {
-      // Если форма не валидна, показываем сообщение
+      //* Если не заполненны все поля, показываем сообщение
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Заполните все обязательные поля!')),
       );

@@ -42,6 +42,12 @@ flutter:
   uses-material-design: true
   assets:
     - assets/icons/
+    - assets/icons/gif/momentum_pay.gif
+    - assets/icons/gif/vin_by_vin.gif
+    - assets/icons/gif/notarial_control.gif
+    - assets/icons/gif/monitoring.gif
+    - assets/icons/gif/smart_control.gif
+    - assets/icons/gif/remoney.gif
     - assets/speedometr.svg
     - assets/images/speedometer.gif
     - assets/images/ezgif-3-362f31f48f.gif

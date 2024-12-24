@@ -3,9 +3,28 @@ import 'package:carcraft/constants/constants.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../../provider/button_provider.dart';
-// import 'button_provider.dart';
 
-// Функция для создания настраиваемой кнопки с текстом и навигацией с эффектом нажатия
+///* Создает настраиваемую кнопку с текстом, навигацией и эффектом нажатия.
+///
+///* Кнопка меняет цвет при нажатии и поддерживает навигацию между страницами,
+/// используя [GoRouter].
+///
+///* Параметры:
+///* - [context]: Контекст сборки Flutter.
+///* - [text]: Текст, отображаемый на кнопке (обязательный параметр).
+///* - [page]: Имя маршрута или путь страницы, на которую будет осуществлена навигация (обязательный параметр).
+///
+///* Возвращает:
+///* - Виджет [Widget], который представляет кнопку с анимацией нажатия.
+///
+///* Пример использования:
+///* ```dart
+///* buildButton(
+///*   context,
+///*   text: "Перейти",
+///*   page: "/nextPage",
+///* );
+///* ```
 Widget buildButton(
   BuildContext context, {
   required String text,
@@ -19,6 +38,23 @@ Widget buildButton(
     ),
   );
 }
+
+///* Виджет кнопки с анимацией изменения цвета при нажатии.
+///
+/// [ColorChangingButton] слушает состояние через [Provider] и меняет
+///* свой цвет, когда пользователь нажимает или отпускает кнопку.
+///
+///* Параметры конструктора:
+///* - [text]: Текст, отображаемый на кнопке.
+///* - [page]: Маршрут, на который будет выполнен переход после нажатия.
+///
+///* Пример:
+///* ```dart
+///* ColorChangingButton(
+///*   text: "Открыть",
+///*   page: "/home",
+///*);
+///* ```
 
 class ColorChangingButton extends StatelessWidget {
   final String text;
@@ -34,7 +70,7 @@ class ColorChangingButton extends StatelessWidget {
   Widget build(BuildContext context) {
     // final provider = Provider.of<ButtonProvider>(context);
     final isPressed =
-        context.watch<ButtonProvider>().isPressed; // Слушаем состояние
+        context.watch<ButtonProvider>().isPressed; //* Слушаем состояние
 
     return GestureDetector(
       onTapDown: (_) => context.read<ButtonProvider>().setPressed(true),

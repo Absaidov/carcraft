@@ -41,7 +41,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               onTap: () {
-                Navigator.pop(context); // Закрываем Drawer
+                context.go('/products');
               },
             ),
             ListTile(

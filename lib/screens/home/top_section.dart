@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:logger/logger.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:permission_handler/permission_handler.dart';
+// import 'package:permission_handler/permission_handler.dart';
 
 class TopSection extends StatelessWidget {
   const TopSection({super.key});

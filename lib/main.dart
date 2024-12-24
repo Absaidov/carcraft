@@ -4,6 +4,7 @@ import 'package:carcraft/screens/home/buttons_on_home_screen/banks.dart';
 import 'package:carcraft/screens/home/buttons_on_home_screen/car_room_show.dart';
 import 'package:carcraft/screens/home/buttons_on_home_screen/check_vin.dart';
 import 'package:carcraft/screens/home/buttons_on_home_screen/investors.dart';
+import 'package:carcraft/screens/home/buttons_on_home_screen/products.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -13,7 +14,7 @@ import 'screens/home/home_screen.dart';
 import 'package:flutter/services.dart';
 
 void main() {
-  // Блокируем ориентацию экрана на портретную
+  //* Блокируем ориентацию экрана на портретную
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -49,9 +50,9 @@ class CarCraft extends StatelessWidget {
               onSurface: white,
             ),
             textSelectionTheme: TextSelectionThemeData(
-              cursorColor: greenPhone, // Цвет курсора
-              selectionColor: greenPhone, // Цвет выделенного текста
-              selectionHandleColor: white, // Цвет ручки выделения
+              cursorColor: greenPhone, //* Цвет курсора
+              selectionColor: greenPhone, //* Цвет выделенного текста
+              selectionHandleColor: white, //* Цвет ручки выделения
             )),
         debugShowCheckedModeBanner: false,
         routerConfig: _router,
@@ -60,7 +61,7 @@ class CarCraft extends StatelessWidget {
   }
 }
 
-// GoRouter Навигация по приложению
+//* GoRouter Навигация по приложению
 final _router = GoRouter(
   routes: [
     GoRoute(
@@ -82,6 +83,10 @@ final _router = GoRouter(
         GoRoute(
           path: 'checkVin',
           builder: (context, state) => const CheckVin(),
+        ),
+        GoRoute(
+          path: 'products',
+          builder: (context, state) => const Products(),
         ),
       ],
     ),

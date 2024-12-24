@@ -1,10 +1,9 @@
 import 'package:carcraft/constants/constants.dart';
-import 'package:carcraft/screens/home/database_section/check_vin/check_vin_middle_section_database.dart';
-// import 'package:carcraft/widgets/widgets_for_text_containter/build_top_section.dart';
+import 'package:carcraft/screens/home/database_section/products/products_middle_section_database.dart';
 import 'package:flutter/material.dart';
 
-class CheckVin extends StatelessWidget {
-  const CheckVin({super.key});
+class Products extends StatelessWidget {
+  const Products({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +16,10 @@ class CheckVin extends StatelessWidget {
           child: Column(
             children: [
               AppBar(
-                backgroundColor: Colors.transparent, //* Прозрачный фон
+                backgroundColor: Colors.transparent, // Прозрачный фон
                 iconTheme: IconThemeData(color: greenPhone),
               ),
-              CheckVinMiddleSectionDatabase(),
+              const ProductsMiddleSectionDatabase(),
             ],
           ),
         ),

@@ -1,20 +1,20 @@
 import 'package:carcraft/constants/constants.dart';
 import 'package:flutter/material.dart';
 
-// Функция для создания контейнера с текстом
+//* Функция для создания контейнера с текстом
 Widget buildTextContainer(
   BuildContext context, {
   required String title,
   required subtitle,
 }) {
   return Container(
-    margin: const EdgeInsets.only(top: 5), //Отступ сверху
-    width: MediaQuery.of(context).size.width, // ширина контейнера
+    margin: const EdgeInsets.only(top: 5), //* Отступ сверху
+    width: MediaQuery.of(context).size.width, //* ширина контейнера
     // height: 220,
-    color: white, // Устанавливаем цвет контейнера
+    color: white, //* Устанавливаем цвет контейнера
     child: Column(
       crossAxisAlignment:
-          CrossAxisAlignment.start, // Выравниваем по левому краю
+          CrossAxisAlignment.start, //* Выравниваем по левому краю
       children: [
         Padding(
           padding: const EdgeInsets.only(
@@ -26,7 +26,7 @@ Widget buildTextContainer(
             style: TextStyle(
               fontSize: 23,
               color: black,
-              fontWeight: FontWeight.bold, // Устанавливаем начертание шрифта
+              fontWeight: FontWeight.bold, //* Устанавливаем начертание шрифта
             ),
           ),
         ),
