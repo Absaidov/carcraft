@@ -6,16 +6,29 @@ import 'package:carcraft/screens/home/buttons_on_home_screen/check_vin.dart';
 import 'package:carcraft/screens/home/buttons_on_home_screen/investors.dart';
 import 'package:carcraft/screens/home/buttons_on_home_screen/products.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:go_router/go_router.dart';
+import 'package:logger/web.dart';
 import 'package:provider/provider.dart';
 
 import 'screens/home/home_screen.dart';
 
 import 'package:flutter/services.dart';
 
-void main() {
-  //* Блокируем ориентацию экрана на портретную
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  try {
+    var logger = Logger();
+    await dotenv.load(
+      fileName:
+          '/Users/dzamalabsaidov/vsCodeProjects/carcraft/assets/config/.env',
+    ); // Загрузка .env файла
+    logger.i("Env loaded successfully");
+  } catch (e) {
+    throw ("Error loading .env file: $e");
+  }
+
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]).then((_) {
@@ -29,11 +42,14 @@ class CarCraft extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
+      //* Подключаем провайдеры
       providers: [
         ChangeNotifierProvider(
           create: (context) => FormDataProvider(),
         )
       ],
+      //* наш главный виджет MaterialApp и подключенный к нему роутер
+      //* для навигации по нашему приложению
       child: MaterialApp.router(
         theme: ThemeData(
             fontFamily: 'Microsoft',
@@ -54,7 +70,9 @@ class CarCraft extends StatelessWidget {
               selectionColor: greenPhone, //* Цвет выделенного текста
               selectionHandleColor: white, //* Цвет ручки выделения
             )),
+        //* убираем надпись DEBUG
         debugShowCheckedModeBanner: false,
+        //* передаем конфиг нашего роутера
         routerConfig: _router,
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:postgres/postgres.dart';
 
 /* 
@@ -11,19 +12,44 @@ class DatabaseService {
 
 /*
 *	•	Метод connect выполняет асинхронное подключение к базе данных PostgreSQL.
-*	•	Здесь создается объект подключения PostgreSQLConnection с указанием хоста (адрес сервера), порта (6432), 
-*     имени базы данных (_____), имени пользователя (_____), пароля и 
+*	•	Здесь создается объект подключения PostgreSQLConnection с указанием хоста (dbHost), порта (dbPort), 
+*     имени базы данных (dbDbname), имени пользователя (dbUser), пароля и 
 *     параметра для использования SSL-соединения (для шифрования данных при передаче).
 *	•	Метод open() открывает соединение с базой данных.
 */
 
   Future<void> connect() async {
+    //* Получение значений переменных из dotenv
+    String? dbUser = dotenv.env['DB_USER'];
+    String? dbPassword = dotenv.env['DB_PASSWORD'];
+    String? dbHost = dotenv.env['DB_HOST'];
+    String? dbDbname = dotenv.env['DB_DBNAME'];
+    String? dbPort = dotenv.env['DB_PORT'];
+
+    //* Проверка обязательных параметров на значение null
+    if (dbUser == null ||
+        dbPassword == null ||
+        dbHost == null ||
+        dbDbname == null ||
+        dbPort == null) {
+      throw Exception(
+          "One or more database configuration variables are missing in the .env file.");
+    }
+
+    //* Попытка преобразования переменной строки порта в int
+    int port;
+    try {
+      port = int.parse(dbPort);
+    } catch (e) {
+      throw Exception("DB_PORT must be a valid integer. Found: $dbPort");
+    }
+    //* передача всех данных на соединение с БД
     _connection = PostgreSQLConnection(
-      'rc1b-xa7a3hxhxpf657kk.mdb.yandexcloud.net',
-      6432, //* порт БД
-      'form_app_db',
-      username: 'form_user_db',
-      password: 'lexus550absaidov',
+      dbHost, //* наш хост
+      port, //* преобразованный dbPort порт БД
+      dbDbname, //* наименование таблицы
+      username: dbUser, //* имя пользователя
+      password: dbPassword, //* пароль
       useSSL: true, //* шифрование подключения
     );
     await _connection.open();

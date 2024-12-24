@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Drawer(
-        // Содержимое бокового меню, надо изменить под тему приложения
+        //* Содержимое бокового меню, надо изменить под тему приложения
         backgroundColor: grayBTN,
         child: ListView(
           padding: EdgeInsets.zero,
