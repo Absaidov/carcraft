@@ -5,26 +5,22 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:flutter/material.dart';
+import 'package:carcraft/screens/home/database_section/check_vin/validators.dart';
+// import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:carcraft/main.dart';
+// import 'package:carcraft/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const CarCraft());
-
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+  group('Группа валидации имени', () {
+    test('Если пользователь ввел данные вернется НИЛ', () {
+      expect(validateName('Jamal Absaidov'), null);
+    });
+    test('Если пользователь не ввел данные выйдет ошибка ', () {
+      expect(validateName(''), 'Введите имя');
+    });
+    test('Если в форме будет NULL', () {
+      expect(validateName(null), 'Введите имя');
+    });
   });
 }

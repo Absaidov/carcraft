@@ -10,6 +10,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:logger/web.dart';
 import 'package:provider/provider.dart';
 
+import 'validators.dart';
+
 class CheckVinMiddleSectionDatabase extends StatelessWidget {
   CheckVinMiddleSectionDatabase({super.key});
 
@@ -64,7 +66,7 @@ class CheckVinMiddleSectionDatabase extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Form(
-        key: _formKey, // Привязываем ключ формы
+        key: _formKey, //* Привязываем ключ формы
         child: ListView(
           children: <Widget>[
             Column(
@@ -87,12 +89,7 @@ class CheckVinMiddleSectionDatabase extends StatelessWidget {
                   controller: context.read<FormDataProvider>().nameController,
                   hintText: 'Введите ваше имя',
                   cursorColor: greenPhone,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Введите имя';
-                    }
-                    return null;
-                  },
+                  validator: validateName,
                 ),
                 buildTextFieldForCheckVin(
                   labelText: 'Телефон',
@@ -100,12 +97,7 @@ class CheckVinMiddleSectionDatabase extends StatelessWidget {
                   hintText: '+7 (___) ___-__-__',
                   cursorColor: greenPhone,
                   keyboardType: TextInputType.phone,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Введите номер телефона';
-                    }
-                    return null;
-                  },
+                  validator: validatePhone,
                 ),
                 buildTextFieldForCheckVin(
                   labelText: 'E-mail',
@@ -113,16 +105,7 @@ class CheckVinMiddleSectionDatabase extends StatelessWidget {
                   hintText: 'Введите Вашу почту',
                   cursorColor: greenPhone,
                   keyboardType: TextInputType.emailAddress,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Введите адрес электронной почты';
-                    }
-                    // Простая проверка валидности email
-                    if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
-                      return 'Введите корректный email';
-                    }
-                    return null;
-                  },
+                  validator: validateEmailField,
                 ),
                 buildTextFieldForCheckVin(
                   numberForTopPadding: 20,
@@ -132,18 +115,13 @@ class CheckVinMiddleSectionDatabase extends StatelessWidget {
                   hintText: 'Введите Ваш комментарий',
                   cursorColor: greenPhone,
                   maxLines: 8,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Введите комментарий';
-                    }
-                    return null;
-                  },
+                  validator: validateComment,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: GestureDetector(
                     onTap: () => submitForm(
-                        context), // Передаем функцию в виде замыкания
+                        context), //* Передаем функцию в виде замыкания
                     child: Container(
                       height: 70,
                       decoration: BoxDecoration(
