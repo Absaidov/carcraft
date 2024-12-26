@@ -42,6 +42,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+    - .env
     - assets/icons/
     - assets/icons/gif/momentum_pay.gif
     - assets/icons/gif/vin_by_vin.gif
@@ -49,7 +50,7 @@ flutter:
     - assets/icons/gif/monitoring.gif
     - assets/icons/gif/smart_control.gif
     - assets/icons/gif/remoney.gif
-    - assets/speedometr.svg
+    # - assets/speedometr.svg
     - assets/images/speedometer.gif
     - assets/images/ezgif-3-362f31f48f.gif
     - assets/images/apped.svg
@@ -59,6 +60,7 @@ flutter:
     - assets/json/animated_speed.json
     - assets/json/animat.json
     - assets/certs/RootCA.pem
+    - assets/config/.env
 
   fonts:
     - family: Microsoft

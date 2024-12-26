@@ -22,7 +22,8 @@ void main() async {
     var logger = Logger();
     await dotenv.load(
       fileName:
-          '/Users/dzamalabsaidov/vsCodeProjects/carcraft/assets/config/.env',
+          // '/Users/dzamalabsaidov/vsCodeProjects/carcraft/assets/config/.env',
+          '.env',
     ); // Загрузка .env файла
     logger.i("Env loaded successfully");
   } catch (e) {
