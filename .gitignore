@@ -42,3 +42,19 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+
+
+# Flutter
+/mobile/build/
+/mobile/.dart_tool/
+/mobile/.packages
+/mobile/pubspec.lock
+
+
+
+# Spring Boot
+/backend/target/
+/backend/.mvn/
+*.log
+*.class
