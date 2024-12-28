@@ -37,7 +37,7 @@ class CheckVinMiddleSectionDatabase extends StatelessWidget {
           formDataProvider.email,
           formDataProvider.comment,
         );
-        //* Уведомляем пользователя об успешной отрпавке
+        //* Уведомляем пользователя об успешной отправке
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Заявка отправлена!')),
         );
