@@ -15,7 +15,7 @@ String? validatePhone(String? phone) {
 }
 
 //* Проверяем ввел ли пользователь валидный e-mail с помощью регулярный выражений
-bool validateEmail(String email) {
+bool _validateEmail(String email) {
   if (email.isEmpty) {
     return false;
   }
@@ -28,7 +28,7 @@ String? validateEmailField(String? email) {
   if (email == null || email.isEmpty) {
     return 'Введите адрес электронной почты';
   }
-  if (!validateEmail(email)) {
+  if (!_validateEmail(email)) {
     return 'Введите корректный email';
   }
   return null;

@@ -5,7 +5,6 @@ import 'package:mobile/widgets/widgest_for_button/build_text_field_for_check_vin
 import 'package:mobile/widgets/widgets_for_text_containter/text_body.dart';
 import 'package:mobile/widgets/widgets_for_text_containter/text_header.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:logger/web.dart';
 import 'package:provider/provider.dart';
@@ -38,16 +37,21 @@ class CheckVinMiddleSectionDatabase extends StatelessWidget {
           formDataProvider.comment,
         );
         //* Уведомляем пользователя об успешной отправке
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Заявка отправлена!')),
-        );
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Заявка отправлена!')),
+          );
+        }
         //* Очищаем поле после отправки данных
         formDataProvider.clearFields();
         //* перехватываем ошибку и выводим ее в приложении
       } catch (e) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Ошибка: $e')),
-        );
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Ошибка: $e')),
+          );
+        }
+
         //* Логируем ошибку в консоли редактора
         logger.i(e);
         //* Закрываем соединение с БД
