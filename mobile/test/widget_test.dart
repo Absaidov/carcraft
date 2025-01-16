@@ -6,12 +6,7 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:mobile/screens/home/database_section/check_vin/validators.dart';
-// import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-// import '../lib/screens/home/database_section/check_vin/validators.dart';
-
-// import 'package:mobile/main.dart';
 
 void main() {
   //* Группа тестировании экрана, где вносят имя, при регистрации заявки

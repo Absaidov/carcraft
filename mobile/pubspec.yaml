@@ -24,6 +24,7 @@ dependencies:
   provider: ^6.1.2
   postgres: ^2.4.0
   flutter_dotenv: ^5.2.1
+  http: ^1.2.2
 
   # postgres: ^3.4.7
   # flutter_native_splash: ^2.2.16
@@ -35,6 +36,7 @@ dev_dependencies:
   flutter_launcher_icons: ^0.9.2
   flutter_lints: ^4.0.0
   mockito: ^5.4.4
+  build_runner: ^2.4.13
 
 # flutter_launcher_icons:
 #   android: false    # Установите true, если хотите иконки для Android
