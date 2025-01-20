@@ -107,6 +107,10 @@ final _router = GoRouter(
           path: 'products',
           builder: (context, state) => const Products(),
         ),
+        GoRoute(
+          path: 'products',
+          builder: (context, state) => const Products(),
+        ),
       ],
     ),
   ],

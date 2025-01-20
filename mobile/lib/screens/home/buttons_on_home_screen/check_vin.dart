@@ -3,6 +3,8 @@ import 'package:mobile/screens/home/database_section/check_vin/check_vin_middle_
 // import 'package:mobile/widgets/widgets_for_text_containter/build_top_section.dart';
 import 'package:flutter/material.dart';
 
+import '../database_section/check_vin/check_vin_middle_section_springboot.dart';
+
 class CheckVin extends StatelessWidget {
   const CheckVin({super.key});
 
@@ -20,7 +22,7 @@ class CheckVin extends StatelessWidget {
                 backgroundColor: Colors.transparent, //* Прозрачный фон
                 iconTheme: IconThemeData(color: greenPhone),
               ),
-              CheckVinMiddleSectionDatabase(),
+              CheckVinMiddleSectionSpringboot(),
             ],
           ),
         ),
