@@ -41,26 +41,30 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               onTap: () {
-                context.go('/products');
+                context.go(
+                    '/products'); //* Переходим на экран с продуктами CarCraft
               },
             ),
             ListTile(
               leading: const Icon(Icons.account_balance),
               title: const Text('Банкам'),
               onTap: () {
-                context.go('/banks');
+                context
+                    .go('/banks'); //* Переходим на экран для преложений банкам
               },
             ),
             ListTile(
               leading: const Icon(Icons.car_crash),
-              title: const Text('Автосалонам'),
+              title: const Text(
+                  'Автосалонам'), //* Переходим на экран для преложений автосалонам
               onTap: () {
                 context.go('/carRoomShow');
               },
             ),
             ListTile(
               leading: const Icon(Icons.account_balance_wallet),
-              title: const Text('Инвесторам'),
+              title: const Text(
+                  'Инвесторам'), //* Переходим на экран для преложений инвесторам
               onTap: () {
                 context.go('/investors');
               },
@@ -69,7 +73,7 @@ class HomeScreen extends StatelessWidget {
               leading: const Icon(Icons.group),
               title: const Text('Наша команда'),
               onTap: () {
-                Navigator.pop(context); // Закрываем Drawer
+                context.go('/team'); //* Переходим на экран с командой CarCraft
               },
             ),
             ListTile(

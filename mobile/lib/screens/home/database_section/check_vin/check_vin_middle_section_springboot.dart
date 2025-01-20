@@ -1,6 +1,6 @@
-import 'package:mobile/screens/home/database_section/check_vin/check_vin_middle_section_database.dart';
+// import 'package:mobile/screens/home/database_section/check_vin/check_vin_middle_section_database.dart';
 import 'package:mobile/constants/constants.dart';
-import 'package:mobile/db_service.dart';
+// import 'package:mobile/db_service.dart';
 import 'package:mobile/provider/form_data_provider.dart';
 import 'package:mobile/servises/api_service.dart';
 import 'package:mobile/widgets/widgest_for_button/build_text_field_for_check_vin.dart';
@@ -8,7 +8,7 @@ import 'package:mobile/widgets/widgets_for_text_containter/text_body.dart';
 import 'package:mobile/widgets/widgets_for_text_containter/text_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:logger/web.dart';
+// import 'package:logger/web.dart';
 import 'package:provider/provider.dart';
 
 import 'validators.dart';

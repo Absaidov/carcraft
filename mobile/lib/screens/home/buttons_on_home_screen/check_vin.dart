@@ -1,5 +1,5 @@
 import 'package:mobile/constants/constants.dart';
-import 'package:mobile/screens/home/database_section/check_vin/check_vin_middle_section_database.dart';
+// import 'package:mobile/screens/home/database_section/check_vin/check_vin_middle_section_database.dart';
 // import 'package:mobile/widgets/widgets_for_text_containter/build_top_section.dart';
 import 'package:flutter/material.dart';
 

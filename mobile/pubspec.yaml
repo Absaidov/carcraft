@@ -54,10 +54,17 @@ flutter:
     - assets/icons/gif/monitoring.gif
     - assets/icons/gif/smart_control.gif
     - assets/icons/gif/remoney.gif
+    - assets/icons/photo/111.png
+    - assets/icons/photo/123.png
+    - assets/icons/photo/555.png
+    - assets/icons/photo/444.png
+    - assets/icons/photo/666.png
+    - assets/icons/photo/333.png
+
     # - assets/speedometr.svg
-    - assets/images/speedometer.gif
-    - assets/images/ezgif-3-362f31f48f.gif
-    - assets/images/apped.svg
+    # - assets/images/speedometer.gif
+    # - assets/images/ezgif-3-362f31f48f.gif
+    # - assets/images/apped.svg
     - assets/apped.svg
     - assets/apped_new.svg
     - assets/apped_new2.svg

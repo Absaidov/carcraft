@@ -104,11 +104,11 @@
 
 2.	Установите зависимости (если у вас установлен Gradle):
     ```bash
-    ./gradlew build
+    mvn clean install
 
 3.	Запустите Spring Boot приложение: 
     ```bash
-    ./gradlew bootRun
+    mvn spring-boot:run
 
 ---
 
@@ -120,7 +120,11 @@
     │   └── ...
     ├── backend/             # Бэкенд на Spring Boot
     │   ├── src/             # Исходники сервера
-    │   ├── build.gradle     # Конфигурация Gradle
+    │   │   ├── main/        # Основные исходники
+    │   │   │   ├── java/    # Java-код
+    │   │   │   └── resources/ # Ресурсы
+    │   │   └── test/        # Тесты
+    │   ├── pom.xml          # Конфигурация Maven
     │   └── ...
     └── README.md            # Этот файл
 

@@ -6,30 +6,31 @@ import 'package:mobile/screens/home/buttons_on_home_screen/check_vin.dart';
 import 'package:mobile/screens/home/buttons_on_home_screen/investors.dart';
 import 'package:mobile/screens/home/buttons_on_home_screen/products.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+// import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:go_router/go_router.dart';
-import 'package:logger/web.dart';
+// import 'package:logger/web.dart';
+import 'package:mobile/screens/home/buttons_on_home_screen/team.dart';
 import 'package:provider/provider.dart';
 
 import 'screens/home/home_screen.dart';
 
 import 'package:flutter/services.dart';
 
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  try {
-    var logger = Logger();
-    await dotenv.load(
-      fileName:
-          // '/Users/dzamalabsaidov/vsCodeProjects/carcraft/assets/config/.env',
-          '.env',
-    ); // Загрузка .env файла
-    logger.i("Env loaded successfully");
-  } catch (e) {
-    throw ("Error loading .env file: $e");
-  }
-
+  // try {
+  //   var logger = Logger();
+  //   await dotenv.load(
+  //     fileName:
+  //         // '/Users/dzamalabsaidov/vsCodeProjects/carcraft/assets/config/.env',
+  //         '.env',
+  //   ); // Загрузка .env файла
+  //   logger.i("Env loaded successfully");
+  // } catch (e) {
+  //   throw ("Error loading .env file: $e");
+  // }
+  //* Ограничиваем ориентацию экрана
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]).then((_) {
@@ -80,7 +81,7 @@ class CarCraft extends StatelessWidget {
   }
 }
 
-//* GoRouter Навигация по приложению
+//* GoRouter Навигация 2.0 по приложению
 final _router = GoRouter(
   routes: [
     GoRoute(
@@ -108,8 +109,8 @@ final _router = GoRouter(
           builder: (context, state) => const Products(),
         ),
         GoRoute(
-          path: 'products',
-          builder: (context, state) => const Products(),
+          path: 'team',
+          builder: (context, state) => const Team(),
         ),
       ],
     ),
