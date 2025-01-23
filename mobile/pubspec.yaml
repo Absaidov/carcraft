@@ -25,6 +25,7 @@ dependencies:
   postgres: ^2.4.0
   flutter_dotenv: ^5.2.1
   http: ^1.2.2
+  carousel_slider: ^5.0.0
 
   # postgres: ^3.4.7
   # flutter_native_splash: ^2.2.16
@@ -60,11 +61,17 @@ flutter:
     - assets/icons/photo/444.png
     - assets/icons/photo/666.png
     - assets/icons/photo/333.png
+    
+    - assets/images/Belenkiy_Boris.jpg
+    - assets/images/Belenkiy_Boris2.jpg
+    - assets/images/Belenkiy_Boris3.jpg
+    - assets/images/ingostrah_carcraft.jpg
 
     # - assets/speedometr.svg
     # - assets/images/speedometer.gif
     # - assets/images/ezgif-3-362f31f48f.gif
     # - assets/images/apped.svg
+    
     - assets/apped.svg
     - assets/apped_new.svg
     - assets/apped_new2.svg

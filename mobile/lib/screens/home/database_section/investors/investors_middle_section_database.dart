@@ -10,7 +10,7 @@ class InvestorsMiddleSectionDatabase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      // Используем Expanded, чтобы ListView занимал всё доступное место
+      //* Используем Expanded, чтобы ListView занимал всё доступное место
       child: ListView(
         children: <Widget>[
           Column(

@@ -4,6 +4,7 @@ import 'package:mobile/screens/home/buttons_on_home_screen/banks.dart';
 import 'package:mobile/screens/home/buttons_on_home_screen/car_room_show.dart';
 import 'package:mobile/screens/home/buttons_on_home_screen/check_vin.dart';
 import 'package:mobile/screens/home/buttons_on_home_screen/investors.dart';
+import 'package:mobile/screens/home/buttons_on_home_screen/news.dart';
 import 'package:mobile/screens/home/buttons_on_home_screen/products.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -111,6 +112,10 @@ final _router = GoRouter(
         GoRoute(
           path: 'team',
           builder: (context, state) => const Team(),
+        ),
+        GoRoute(
+          path: 'news',
+          builder: (context, state) => const News(),
         ),
       ],
     ),

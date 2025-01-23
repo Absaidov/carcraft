@@ -80,7 +80,7 @@ class HomeScreen extends StatelessWidget {
               leading: const Icon(Icons.feed),
               title: const Text('Новости'),
               onTap: () {
-                Navigator.pop(context); // Закрываем Drawer
+                context.go('/news'); //* Переходим на экран с новостями CarCraft
               },
             ),
           ],

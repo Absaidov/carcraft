@@ -87,8 +87,6 @@ class ColorChangingButton extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.5),
-              // spreadRadius: _isHovered ? 5 : 2,
-              // blurRadius: _isHovered ? 7 : 5,
               offset: const Offset(0, 3),
             ),
           ],
