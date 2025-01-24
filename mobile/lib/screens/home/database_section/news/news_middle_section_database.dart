@@ -181,7 +181,7 @@ MultiFactoring использует принципы факторинга, гд�
                   urls: [
                     'https://dzen.ru/a/Z2sMTr3DVWBfYM8c',
                     'https://dzen.ru/a/Z2lhb71XhFDfrj51',
-                    'https://dzen.ru',
+                    'https://dzen.ru/a/Z2MYWuDIqnGBOBBI?clckid=ffea56b6',
                     'https://dzen.ru/a/Z1y6P48OzBZGY03J'
                   ],
                 ),

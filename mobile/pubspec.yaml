@@ -67,6 +67,7 @@ flutter:
     - assets/images/Belenkiy_Boris3.jpg
     - assets/images/ingostrah_carcraft.jpg
     - assets/images/dobro.jpg
+    - assets/images/Boris_Dmitriev.jpg
 
     #* Импорт SVG изображений
     - assets/apped.svg
