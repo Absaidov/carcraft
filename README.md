@@ -69,7 +69,7 @@
 ## Смотреть видео на Рутуб
 
 
-<a href="https://rutube.ru/video/ID_видео">
+<a href="https://rutube.ru/video/private/f9efeee01ab39c33bbf22a15ae9ff999/?p=Oj2eu7UKPL3Vlz8DlWDQ3g">
     <img src="https://raw.githubusercontent.com/Absaidov/screen_shots/main/Приложение%20CarCraft/CarCraft.png" alt="Смотреть видео на Rutube" width="400">
 </a>
 
