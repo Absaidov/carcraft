@@ -19,13 +19,13 @@ class HomeScreen extends StatelessWidget {
           children: [
             DrawerHeader(
               decoration: BoxDecoration(
-                color: gray,
+                color: blue,
               ),
               child: const Text(
                 'Меню',
                 style: TextStyle(
                   // color: Colors.white,
-                  fontSize: 44,
+                  fontSize: 54,
                 ),
               ),
             ),
@@ -46,39 +46,77 @@ class HomeScreen extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.account_balance),
-              title: const Text('Банкам'),
+              leading: Icon(
+                Icons.account_balance,
+                color: grayBTNFont,
+              ),
+              title: Text(
+                'Банкам',
+                style: TextStyle(
+                  color: grayBTNFont,
+                ),
+              ),
               onTap: () {
                 context
                     .go('/banks'); //* Переходим на экран для преложений банкам
               },
             ),
             ListTile(
-              leading: const Icon(Icons.car_crash),
-              title: const Text(
-                  'Автосалонам'), //* Переходим на экран для преложений автосалонам
+              leading: Icon(
+                Icons.car_crash,
+                color: grayBTNFont,
+              ),
+              title: Text(
+                'Автосалонам',
+                style: TextStyle(
+                  color: grayBTNFont,
+                ),
+              ), //* Переходим на экран для преложений автосалонам
               onTap: () {
                 context.go('/carRoomShow');
               },
             ),
             ListTile(
-              leading: const Icon(Icons.account_balance_wallet),
-              title: const Text(
-                  'Инвесторам'), //* Переходим на экран для преложений инвесторам
+              leading: Icon(
+                Icons.account_balance_wallet,
+                color: grayBTNFont,
+              ),
+              title: Text(
+                'Инвесторам',
+                style: TextStyle(
+                  color: grayBTNFont,
+                ),
+              ), //* Переходим на экран для преложений инвесторам
               onTap: () {
                 context.go('/investors');
               },
             ),
             ListTile(
-              leading: const Icon(Icons.group),
-              title: const Text('Наша команда'),
+              leading: Icon(
+                Icons.group,
+                color: grayBTNFont,
+              ),
+              title: Text(
+                'Наша команда',
+                style: TextStyle(
+                  color: grayBTNFont,
+                ),
+              ),
               onTap: () {
                 context.go('/team'); //* Переходим на экран с командой CarCraft
               },
             ),
             ListTile(
-              leading: const Icon(Icons.feed),
-              title: const Text('Новости'),
+              leading: Icon(
+                Icons.feed,
+                color: grayBTNFont,
+              ),
+              title: Text(
+                'Новости',
+                style: TextStyle(
+                  color: grayBTNFont,
+                ),
+              ),
               onTap: () {
                 context.go('/news'); //* Переходим на экран с новостями CarCraft
               },

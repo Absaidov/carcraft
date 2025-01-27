@@ -1,3 +1,4 @@
+import 'package:mobile/constants/constants.dart';
 import 'package:mobile/widgets/widgest_for_button/build_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -31,8 +32,15 @@ class MiddleSection extends StatelessWidget {
                 Column(
                   children: [
                     SizedBox(
+                      //* Высота SVG файла
                       height: 105,
-                      child: SvgPicture.asset('assets/icons/logo.svg'),
+                      //* Импорт файла
+                      child: SvgPicture.asset(
+                        'assets/icons/logo.svg',
+                        //* Меняем цвет изображения
+                        colorFilter:
+                            ColorFilter.mode(greenPhone, BlendMode.srcIn),
+                      ),
                     ),
                     const SizedBox(
                       height: 110,
