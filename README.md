@@ -68,14 +68,14 @@
 
 ## Смотреть видео на Рутуб
 
-   <iframe
-       width="720"
-       height="405"
-       src="https://rutube.ru/play/embed/f9efeee01ab39c33bbf22a15ae9ff999/?p=Oj2eu7UKPL3Vlz8DlWDQ3g"
-       frameBorder="0"
-       allow="clipboard-write; autoplay"
-       allowFullScreen
-     ></iframe>
+<iframe
+   width="720"
+   height="405"
+   src="https://rutube.ru/play/embed/f9efeee01ab39c33bbf22a15ae9ff999/?p=Oj2eu7UKPL3Vlz8DlWDQ3g"
+   frameBorder="0"
+   allow="clipboard-write; autoplay"
+   allowFullScreen
+></iframe>
     
 
 
